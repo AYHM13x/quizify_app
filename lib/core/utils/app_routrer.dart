@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/_0_splash/presentation/views/splash_view.dart';
-// import '../../features/_1_home/presentation/views/home_view.dart';
-// import '../../features/_2_quiz/presentation/views/quiz_view.dart';
+import '../../features/_1_home/presentation/views/home_view.dart';
+import '../../features/_2_quiz/presentation/views/quiz_view.dart';
 
 abstract class AppRouter {
   //Paths
@@ -17,14 +17,14 @@ abstract class AppRouter {
         path: splashViewPath,
         builder: (context, state) => const SplashView(),
       ),
-      // GoRoute(
-      //   path: homeViewPath,
-      //   builder: (context, state) => const HomeView(),
-      // ),
-      // GoRoute(
-      //   path: quizViewPath,
-      //   builder: (context, state) => const QuizView(),
-      // ),
+      GoRoute(
+        path: homeViewPath,
+        builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: quizViewPath,
+        builder: (context, state) => const QuizView(),
+      ),
     ],
   );
 }
