@@ -5,7 +5,8 @@ import 'package:quizify_app/features/_2_quiz/presentation/views/widgets/question
 
 import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../appbar/quiz_view_app_bar.dart';
-import '../widgets/confirm_button.dart';
+
+import '../../../../../core/custom_widgets/custom_button.dart';
 import '../widgets/score_view.dart';
 
 class QuizViewbody extends StatelessWidget {
@@ -38,7 +39,9 @@ class QuizViewbody extends StatelessWidget {
                       ),
                       ScoreView(),
                       Gap(16),
-                      ConfirmButton(),
+                      CutsomButton(
+                        text: "Confirm",
+                      ),
                     ],
                   ),
                 ),
