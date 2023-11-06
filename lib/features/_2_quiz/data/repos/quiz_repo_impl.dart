@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:quizify_app/features/_2_quiz/data/repos/quiz_repo.dart';
 
 import '../../../../core/errors/failures.dart';
@@ -15,15 +17,22 @@ class QuiuzRepoImpl implements QuizRepo {
   @override
   Future<Either<Failure, List<QuestionModel>>> fetchquestions(
       {required String category}) async {
-    List<QuestionModel> data =
-        await apiService.get(endPoint: "$_endPoint&category=$category");
-    List<QuestionModel> questions = [];
-    if (data is List) {
+    try {
+      List<dynamic> data =
+          await apiService.get(endPoint: "$_endPoint&category=$category");
+      List<QuestionModel> questions = [];
       for (var item in data) {
         questions.add(QuestionModel.fromJson(item));
       }
+      return right(questions);
+    } catch (e) {
+      debugPrint(e.toString());
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(ServerFailure("There was an Error: $e"));
     }
-
-    return;
   }
 }

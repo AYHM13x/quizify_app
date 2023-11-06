@@ -38,10 +38,14 @@ class ServerFailure extends Failure {
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+    if (statusCode == 400) {
+      return ServerFailure("!!TURN VPN ON!!");
+    } else if (statusCode == 401) {
+      return ServerFailure("Unauthurized");
+    } else if (statusCode == 403) {
       return ServerFailure("!!TURN VPN ON!!");
     } else if (statusCode == 404) {
-      return ServerFailure('Page not found, Please try later!');
+      return ServerFailure(response["error"]);
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server Error, Please try later!');
     } else if (statusCode == 501) {

@@ -5,5 +5,5 @@ import '../../../../core/errors/failures.dart';
 
 abstract class QuizRepo {
   Future<Either<Failure, List<QuestionModel>>> fetchquestions(
-      {String category});
+      {required String category});
 }
