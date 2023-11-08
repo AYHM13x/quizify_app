@@ -39,9 +39,9 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400) {
-      return ServerFailure("!!TURN VPN ON!!");
+      return ServerFailure("Bad Request");
     } else if (statusCode == 401) {
-      return ServerFailure("Unauthurized");
+      return ServerFailure("Unauthurized check your apikey");
     } else if (statusCode == 403) {
       return ServerFailure("!!TURN VPN ON!!");
     } else if (statusCode == 404) {

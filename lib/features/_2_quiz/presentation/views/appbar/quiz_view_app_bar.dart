@@ -5,8 +5,8 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
 
 class QuizViewAppBar extends StatelessWidget {
-  const QuizViewAppBar({super.key});
-
+  const QuizViewAppBar({super.key, this.text});
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,6 +17,11 @@ class QuizViewAppBar extends StatelessWidget {
             fontFamily: FontFamilies.dancingScript,
             fontWeight: FontWeight.bold,
           ),
+        ),
+        const Spacer(),
+        Text(
+          text ?? "",
+          style: Styles.textStyle30,
         ),
         const Spacer(),
         IconButton(

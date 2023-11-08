@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/dimensions_of_screen.dart';
-import '../../../../../core/custom_widgets/custom_button.dart';
+import 'answer_item.dart';
 
 class AswerSection extends StatefulWidget {
   const AswerSection({
@@ -18,12 +18,12 @@ class _AswerSectionState extends State<AswerSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: DimensionsOfScreen.dimensionsOfHeight(context, 58),
+      height: DimensionsOfScreen.dimensionsOfHeight(context, 57),
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 6,
         itemBuilder: (context, index) {
-          return CutsomButton(
+          return AswerItem(
             text: "${index + 1} - option",
             onPressed: () {
               selectedAnswer = index;

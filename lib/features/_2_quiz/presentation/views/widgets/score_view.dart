@@ -6,7 +6,11 @@ import '../../../../../core/utils/styles.dart';
 class ScoreView extends StatelessWidget {
   const ScoreView({
     super.key,
+    required this.correctAnswer,
+    required this.wrongAnswer,
   });
+
+  final int correctAnswer, wrongAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +18,13 @@ class ScoreView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Correct Answers: 0",
+          "Correct Answers: $correctAnswer",
           style: Styles.textStyle18.copyWith(
             color: AppColors.greenColor,
           ),
         ),
         Text(
-          "Wrong Answers: 0",
+          "Wrong Answers: $wrongAnswer",
           style: Styles.textStyle18.copyWith(
             color: AppColors.redColor,
           ),

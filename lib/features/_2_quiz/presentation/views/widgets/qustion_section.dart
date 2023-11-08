@@ -6,7 +6,10 @@ import '../../../../../core/utils/styles.dart';
 class QuestionSection extends StatelessWidget {
   const QuestionSection({
     super.key,
+    required this.text,
   });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +20,10 @@ class QuestionSection extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: AppColors.whiteColor),
-        color: AppColors.greyColor,
+        color: AppColors.blackColor,
       ),
       child: Text(
-        "Question Text?",
+        text,
         style: Styles.textStyle16.copyWith(
           fontWeight: FontWeight.bold,
         ),

@@ -19,7 +19,9 @@ class QuizViewbody extends StatelessWidget {
         const Gap(8),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 4),
-          child: QuizViewAppBar(),
+          child: QuizViewAppBar(
+            text: "Linux Quiz",
+          ),
         ),
         const Gap(16),
         Padding(
@@ -27,20 +29,29 @@ class QuizViewbody extends StatelessWidget {
           child: SizedBox(
             height: DimensionsOfScreen.dimensionsOfHeight(context, 86),
             child: const CustomScrollView(
+              physics: BouncingScrollPhysics(),
               slivers: [
                 SliverToBoxAdapter(
                   child: Column(
                     children: [
-                      QuestionView(),
+                      QuestionView(
+                        text: "Question Text?",
+                      ),
                       Divider(
                         height: 8,
                         thickness: 5,
                         color: AppColors.greyColor,
                       ),
-                      ScoreView(),
+                      ScoreView(
+                        correctAnswer: 0,
+                        wrongAnswer: 0,
+                      ),
                       Gap(16),
                       CutsomButton(
                         text: "Confirm",
+                      ),
+                      CutsomButton(
+                        text: "Next Question",
                       ),
                     ],
                   ),
