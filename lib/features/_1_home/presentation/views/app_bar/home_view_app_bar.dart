@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
-import '../../../../../core/utils/theme_provider.dart';
 
 class HomeViewAppBar extends StatefulWidget {
   const HomeViewAppBar({super.key});
@@ -14,7 +12,7 @@ class HomeViewAppBar extends StatefulWidget {
 }
 
 class _HomeViewAppBarState extends State<HomeViewAppBar> {
-  bool isDarkmode = false;
+  bool isDarkmode = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +27,7 @@ class _HomeViewAppBarState extends State<HomeViewAppBar> {
         ),
         const Spacer(),
         IconButton(
-          onPressed: () {
-            final themeProvider = Provider.of<ThemeProvider>(context,
-                listen:
-                    false); // get the provider, listen false is necessary cause is in a function
-
-            setState(() {
-              isDarkmode = !isDarkmode;
-            }); // change the variable
-
-            isDarkmode // call the functions
-                ? themeProvider.setDarkmode()
-                : themeProvider.setLightMode();
-          },
+          onPressed: () {},
           icon: Icon(!isDarkmode ? Icons.dark_mode : Icons.sunny),
           iconSize: 34,
         )

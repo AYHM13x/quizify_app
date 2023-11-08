@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import 'answer_section.dart';
 import 'qustion_section.dart';
 
 class QuestionView extends StatelessWidget {
-  const QuestionView({super.key, required this.text});
+  const QuestionView({super.key, required this.question});
 
-  final String text;
+  final QuestionModel question;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         QuestionSection(
-          text: text,
+          text: question.question!,
         ),
         const Gap(8),
         const Row(

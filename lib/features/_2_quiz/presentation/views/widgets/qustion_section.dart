@@ -19,8 +19,7 @@ class QuestionSection extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: AppColors.whiteColor),
-        color: AppColors.blackColor,
+        border: Border.all(color: AppColors.blackColor),
       ),
       child: Text(
         text,
