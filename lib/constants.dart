@@ -1,4 +1,5 @@
 const kAppName = "Quizify";
+const kThereIsNoAnswer = "Null";
 
 const kCategories = [
   "Linux",

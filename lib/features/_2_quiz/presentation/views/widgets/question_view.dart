@@ -19,11 +19,11 @@ class QuestionView extends StatelessWidget {
           text: question.question!,
         ),
         const Gap(8),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("id quetion"),
-            Text("diffculty"),
+            Text("id: ${question.id.toString()}"),
+            Text("difficulty: ${question.difficulty!}"),
           ],
         ),
         const Divider(
@@ -32,9 +32,11 @@ class QuestionView extends StatelessWidget {
           color: AppColors.greyColor,
         ),
         const Gap(8),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: AswerSection(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: AswerSection(
+            question: question,
+          ),
         ),
       ],
     );
