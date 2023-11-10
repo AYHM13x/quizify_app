@@ -25,87 +25,94 @@ class QuizViewbody extends StatefulWidget {
 class _QuizViewbodyState extends State<QuizViewbody> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Gap(8),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4),
-          child: QuizViewAppBar(
-            text: "Linux Quiz",
-          ),
-        ),
-        const Gap(16),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: SizedBox(
-            height: DimensionsOfScreen.dimensionsOfHeight(context, 86),
-            child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      QuestionView(
-                        question: widget.questions[
-                            BlocProvider.of<AllQuestionsCubit>(context)
-                                .currentQuestion],
-                      ),
-                      const Divider(
-                        height: 8,
-                        thickness: 5,
-                        color: AppColors.greyColor,
-                      ),
-                      ScoreView(
-                        correctAnswer:
-                            BlocProvider.of<AllQuestionsCubit>(context)
-                                .correctAnswer,
-                        wrongAnswer: BlocProvider.of<AllQuestionsCubit>(context)
-                            .worngAnswer,
-                      ),
-                      const Gap(16),
-                      CutsomButton(
-                        text: "Confirm",
-                        isPressable: BlocProvider.of<AllQuestionsCubit>(context)
-                                    .choosedAnswerIndex ==
-                                -1
-                            ? false
-                            : true,
-                        onPressed: () {
-                          int currentQuestion =
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .currentQuestion;
-                          int choosedAnswer =
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .choosedAnswerIndex;
-                          if (choosedAnswer != -1) {
-                            if (widget
-                                    .questions[currentQuestion]
-                                    .correctAnswers!
-                                    .correctAnswerList[choosedAnswer] ==
-                                "true") {
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .correctAnswer++;
-                            } else {
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .worngAnswer++;
-                            }
-                          }
-                          BlocProvider.of<AllQuestionsCubit>(context)
-                              .choosedAnswerIndex = -1;
-                          setState(() {});
-                        },
-                      ),
-                      const CutsomButton(
-                        text: "Next Question",
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    return BlocListener<AllQuestionsCubit, AllQuestionsState>(
+      listener: (context, state) {
+        if (state is AllQuestionsUserAnswered) {
+          setState(() {});
+        }
+      },
+      child: Column(
+        children: [
+          const Gap(8),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4),
+            child: QuizViewAppBar(
+              text: "Linux Quiz",
             ),
           ),
-        ),
-      ],
+          const Gap(16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: SizedBox(
+              height: DimensionsOfScreen.dimensionsOfHeight(context, 86),
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        QuestionView(
+                          question: widget.questions[
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .currentQuestion],
+                        ),
+                        const Divider(
+                          height: 8,
+                          thickness: 5,
+                          color: AppColors.greyColor,
+                        ),
+                        ScoreView(
+                          correctAnswer:
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .correctAnswer,
+                          wrongAnswer:
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .worngAnswer,
+                        ),
+                        const Gap(16),
+                        CutsomButton(
+                          text: "Confirm",
+                          isPressable:
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                          .choosedAnswerIndex ==
+                                      -1
+                                  ? false
+                                  : true,
+                          onPressed: () {
+                            submitAnswer(context);
+                            setState(() {});
+                          },
+                        ),
+                        const CutsomButton(
+                          text: "Next Question",
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+
+  void submitAnswer(BuildContext context) {
+    int currentQuestion =
+        BlocProvider.of<AllQuestionsCubit>(context).currentQuestion;
+    int choosedAnswerIndex =
+        BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex;
+    debugPrint(choosedAnswerIndex.toString());
+    if (choosedAnswerIndex != -1 || choosedAnswerIndex != -2) {
+      if (widget.questions[currentQuestion].correctAnswers!
+              .correctAnswerList[choosedAnswerIndex] ==
+          "true") {
+        BlocProvider.of<AllQuestionsCubit>(context).correctAnswer++;
+      } else {
+        BlocProvider.of<AllQuestionsCubit>(context).worngAnswer++;
+      }
+    }
+    BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex = -1;
   }
 }

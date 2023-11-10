@@ -11,6 +11,8 @@ class AllQuestionsInitial extends AllQuestionsState {}
 
 class AllQuestionsLoading extends AllQuestionsState {}
 
+class AllQuestionsUserAnswered extends AllQuestionsState {}
+
 class AllQuestionsSuccess extends AllQuestionsState {
   final List<QuestionModel> questions;
 

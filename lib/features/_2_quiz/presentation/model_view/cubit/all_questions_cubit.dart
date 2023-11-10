@@ -8,11 +8,13 @@ part 'all_questions_state.dart';
 class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   AllQuestionsCubit(this.quizRepo) : super(AllQuestionsInitial());
   final QuizRepo quizRepo;
+  List<QuestionModel> questionsList = [];
   int currentQuestion = 0;
   int choosedAnswerIndex = -1;
   int correctAnswer = 0, worngAnswer = 0;
 
   Future<void> fetchAllQuestions({required String category}) async {
+    _initValues();
     emit(AllQuestionsLoading());
     var result = await quizRepo.fetchquestions(category: category);
 
@@ -23,10 +25,25 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
         );
       },
       (listOfQuestions) {
+        questionsList = listOfQuestions;
         emit(
           AllQuestionsSuccess(listOfQuestions),
         );
       },
     );
+  }
+
+  void userChoosed() {
+    if (choosedAnswerIndex != -1) {
+      emit(AllQuestionsUserAnswered());
+    }
+    emit(AllQuestionsSuccess(questionsList));
+  }
+
+  void _initValues() {
+    currentQuestion = 0;
+    choosedAnswerIndex = -1;
+    correctAnswer = 0;
+    worngAnswer = 0;
   }
 }

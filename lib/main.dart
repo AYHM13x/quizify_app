@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/utils/AsstesApp.dart';
 import 'core/utils/app_routrer.dart';
+import 'core/utils/simple_bloc_observer.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   runApp(const QuizifyApp());
 }
 

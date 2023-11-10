@@ -36,6 +36,7 @@ class _AswerSectionState extends State<AswerSection> {
               selectedAnswer = index;
               BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex =
                   index;
+              BlocProvider.of<AllQuestionsCubit>(context).userChoosed();
               setState(() {});
             },
             isSelected: selectedAnswer == index ? true : false,
