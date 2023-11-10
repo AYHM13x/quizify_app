@@ -17,7 +17,7 @@ class CutsomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AbsorbPointer(
-      absorbing: !isPressable,
+      absorbing: isPressable,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: ElevatedButton(

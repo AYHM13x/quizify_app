@@ -23,7 +23,17 @@ class QuestionView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("id: ${question.id.toString()}"),
-            Text("difficulty: ${question.difficulty!}"),
+            Row(
+              children: [
+                const Text("difficulty: "),
+                Text(
+                  question.difficulty!,
+                  style: TextStyle(
+                    color: getColorDifficulty(question.difficulty!),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         const Divider(
@@ -40,5 +50,15 @@ class QuestionView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Color getColorDifficulty(String text) {
+    if (text == "Easy") {
+      return AppColors.greenColor;
+    } else if (text == "Medium") {
+      return AppColors.orangeColor;
+    } else {
+      return AppColors.redColor;
+    }
   }
 }

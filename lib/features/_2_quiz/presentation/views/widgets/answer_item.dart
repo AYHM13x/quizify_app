@@ -19,9 +19,8 @@ class AswerItem extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return AbsorbPointer(
-      absorbing: answerText == kThereIsNoAnswer ? true : false,
-      child: Padding(
+    if (answerText != kThereIsNoAnswer) {
+      return Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: ElevatedButton(
           onPressed: onPressed,
@@ -46,12 +45,14 @@ class AswerItem extends StatelessWidget {
             child: Text(
               "$id - $answerText",
               style: Styles.textStyle16.copyWith(
-                color: AppColors.whiteColor,
+                color: isSelected ? AppColors.blackColor : AppColors.whiteColor,
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return const Center();
+    }
   }
 }

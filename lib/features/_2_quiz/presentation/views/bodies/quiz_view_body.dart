@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:quizify_app/features/_2_quiz/presentation/model_view/cubit/all_questions_cubit.dart';
 
 import '../../../../../core/custom_widgets/custom_button.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -21,8 +23,6 @@ class QuizViewbody extends StatefulWidget {
 }
 
 class _QuizViewbodyState extends State<QuizViewbody> {
-  int currentQuestion = 0;
-  int correctAnswer = 0, worngAsnwer = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,7 +46,9 @@ class _QuizViewbodyState extends State<QuizViewbody> {
                   child: Column(
                     children: [
                       QuestionView(
-                        question: widget.questions[currentQuestion],
+                        question: widget.questions[
+                            BlocProvider.of<AllQuestionsCubit>(context)
+                                .currentQuestion],
                       ),
                       const Divider(
                         height: 8,
@@ -54,12 +56,44 @@ class _QuizViewbodyState extends State<QuizViewbody> {
                         color: AppColors.greyColor,
                       ),
                       ScoreView(
-                        correctAnswer: correctAnswer,
-                        wrongAnswer: worngAsnwer,
+                        correctAnswer:
+                            BlocProvider.of<AllQuestionsCubit>(context)
+                                .correctAnswer,
+                        wrongAnswer: BlocProvider.of<AllQuestionsCubit>(context)
+                            .worngAnswer,
                       ),
                       const Gap(16),
-                      const CutsomButton(
+                      CutsomButton(
                         text: "Confirm",
+                        isPressable: BlocProvider.of<AllQuestionsCubit>(context)
+                                    .choosedAnswerIndex ==
+                                -1
+                            ? false
+                            : true,
+                        onPressed: () {
+                          int currentQuestion =
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .currentQuestion;
+                          int choosedAnswer =
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .choosedAnswerIndex;
+                          if (choosedAnswer != -1) {
+                            if (widget
+                                    .questions[currentQuestion]
+                                    .correctAnswers!
+                                    .correctAnswerList[choosedAnswer] ==
+                                "true") {
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .correctAnswer++;
+                            } else {
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .worngAnswer++;
+                            }
+                          }
+                          BlocProvider.of<AllQuestionsCubit>(context)
+                              .choosedAnswerIndex = -1;
+                          setState(() {});
+                        },
                       ),
                       const CutsomButton(
                         text: "Next Question",

@@ -8,6 +8,9 @@ part 'all_questions_state.dart';
 class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   AllQuestionsCubit(this.quizRepo) : super(AllQuestionsInitial());
   final QuizRepo quizRepo;
+  int currentQuestion = 0;
+  int choosedAnswerIndex = -1;
+  int correctAnswer = 0, worngAnswer = 0;
 
   Future<void> fetchAllQuestions({required String category}) async {
     emit(AllQuestionsLoading());
