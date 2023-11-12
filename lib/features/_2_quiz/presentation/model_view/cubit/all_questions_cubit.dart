@@ -12,6 +12,16 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   int currentQuestion = 0;
   int choosedAnswerIndex = -1;
   int correctAnswer = 0, worngAnswer = 0;
+  bool isUserChooseAnswer = false;
+  bool isUserSubmitAnswer = false;
+
+  void _initValues() {
+    currentQuestion = 0;
+    choosedAnswerIndex = -1;
+    correctAnswer = 0;
+    worngAnswer = 0;
+    isUserSubmitAnswer = false;
+  }
 
   Future<void> fetchAllQuestions({required String category}) async {
     _initValues();
@@ -35,15 +45,28 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
 
   void userChoosed() {
     if (choosedAnswerIndex != -1) {
-      emit(AllQuestionsUserAnswered());
+      isUserChooseAnswer = true;
+      emit(AllQuestionsUserAnswered(questionsList));
     }
     emit(AllQuestionsSuccess(questionsList));
   }
 
-  void _initValues() {
-    currentQuestion = 0;
-    choosedAnswerIndex = -1;
-    correctAnswer = 0;
-    worngAnswer = 0;
+  void updateScore() {
+    if (questionsList[currentQuestion]
+            .correctAnswers!
+            .correctAnswerList[choosedAnswerIndex] ==
+        "true") {
+      correctAnswer++;
+    } else {
+      worngAnswer++;
+    }
+    isUserSubmitAnswer = true;
+    emit(AllQuestionsUserSubmit(
+      questionsList,
+    ));
+  }
+
+  int getChoosedAnswerIndex() {
+    return choosedAnswerIndex;
   }
 }

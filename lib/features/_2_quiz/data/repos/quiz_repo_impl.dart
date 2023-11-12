@@ -7,12 +7,12 @@ import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
 import '../question_model/question_model.dart';
 
-class QuiuzRepoImpl implements QuizRepo {
+class QuizRepoImpl implements QuizRepo {
   final ApiService apiService;
   final String apiKey = "VVFqypYHVmNG03q2pgF02XdAv1hlVXC1rRRqkuu1";
   late final String _endPoint = "questions?apiKey=$apiKey";
 
-  QuiuzRepoImpl(this.apiService);
+  QuizRepoImpl(this.apiService);
 
   @override
   Future<Either<Failure, List<QuestionModel>>> fetchquestions(

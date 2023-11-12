@@ -4,15 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../model_view/cubit/all_questions_cubit.dart';
 import 'quiz_view_body.dart';
 
-class QuizViewbodyBlocConsumer extends StatefulWidget {
-  const QuizViewbodyBlocConsumer({super.key});
+class QuizViewbodyBlocBuilder extends StatefulWidget {
+  const QuizViewbodyBlocBuilder({super.key});
 
   @override
-  State<QuizViewbodyBlocConsumer> createState() =>
-      _QuizViewbodyBlocConsumerState();
+  State<QuizViewbodyBlocBuilder> createState() =>
+      _QuizViewbodyBlocBuilderState();
 }
 
-class _QuizViewbodyBlocConsumerState extends State<QuizViewbodyBlocConsumer> {
+class _QuizViewbodyBlocBuilderState extends State<QuizViewbodyBlocBuilder> {
   @override
   void initState() {
     BlocProvider.of<AllQuestionsCubit>(context)
@@ -22,12 +22,13 @@ class _QuizViewbodyBlocConsumerState extends State<QuizViewbodyBlocConsumer> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AllQuestionsCubit, AllQuestionsState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocBuilder<AllQuestionsCubit, AllQuestionsState>(
       builder: (context, state) {
         if (state is AllQuestionsSuccess) {
+          return QuizViewbody(
+            questions: state.questions,
+          );
+        } else if (state is AllQuestionsUserSubmit) {
           return QuizViewbody(
             questions: state.questions,
           );

@@ -30,6 +30,9 @@ class _QuizViewbodyState extends State<QuizViewbody> {
         if (state is AllQuestionsUserAnswered) {
           setState(() {});
         }
+        if (state is AllQuestionsUserSubmit) {
+          setState(() {});
+        }
       },
       child: Column(
         children: [
@@ -99,20 +102,8 @@ class _QuizViewbodyState extends State<QuizViewbody> {
   }
 
   void submitAnswer(BuildContext context) {
-    int currentQuestion =
-        BlocProvider.of<AllQuestionsCubit>(context).currentQuestion;
-    int choosedAnswerIndex =
-        BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex;
-    debugPrint(choosedAnswerIndex.toString());
-    if (choosedAnswerIndex != -1 || choosedAnswerIndex != -2) {
-      if (widget.questions[currentQuestion].correctAnswers!
-              .correctAnswerList[choosedAnswerIndex] ==
-          "true") {
-        BlocProvider.of<AllQuestionsCubit>(context).correctAnswer++;
-      } else {
-        BlocProvider.of<AllQuestionsCubit>(context).worngAnswer++;
-      }
+    if (BlocProvider.of<AllQuestionsCubit>(context).isUserChooseAnswer) {
+      BlocProvider.of<AllQuestionsCubit>(context).updateScore();
     }
-    BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex = -1;
   }
 }
