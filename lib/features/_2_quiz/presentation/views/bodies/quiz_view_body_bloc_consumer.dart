@@ -24,13 +24,22 @@ class _QuizViewbodyBlocBuilderState extends State<QuizViewbodyBlocBuilder> {
   Widget build(BuildContext context) {
     return BlocBuilder<AllQuestionsCubit, AllQuestionsState>(
       builder: (context, state) {
-        if (state is AllQuestionsSuccess) {
-          return QuizViewbody(
-            questions: state.questions,
-          );
+        if (state is AllQuestionsSuccess ||
+            state is AllQuestionsGoToNextQuestion) {
+          if (state is AllQuestionsSuccess) {
+            return QuizViewbody(
+              questions: state.questionsList,
+            );
+          } else if (state is AllQuestionsGoToNextQuestion) {
+            return QuizViewbody(
+              questions: state.questionsList,
+            );
+          } else {
+            return const Center();
+          }
         } else if (state is AllQuestionsUserSubmit) {
           return QuizViewbody(
-            questions: state.questions,
+            questions: state.questionsList,
           );
         } else if (state is AllQuestionsFailure) {
           return Center(

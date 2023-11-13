@@ -83,8 +83,15 @@ class _QuizViewbodyState extends State<QuizViewbody> {
                             setState(() {});
                           },
                         ),
-                        const CutsomButton(
+                        CutsomButton(
                           text: "Next Question",
+                          isPressable:
+                              BlocProvider.of<AllQuestionsCubit>(context)
+                                  .isAvaliableToGoToNextQuestion(),
+                          onPressed: () {
+                            goToNextQuestion(context);
+                            setState(() {});
+                          },
                         ),
                       ],
                     ),
@@ -98,9 +105,11 @@ class _QuizViewbodyState extends State<QuizViewbody> {
     );
   }
 
+  void goToNextQuestion(BuildContext context) {
+    BlocProvider.of<AllQuestionsCubit>(context).goToNextQuestion();
+  }
+
   void submitAnswer(BuildContext context) {
-    if (BlocProvider.of<AllQuestionsCubit>(context).isUserChooseAnswer) {
-      BlocProvider.of<AllQuestionsCubit>(context).updateScore();
-    }
+    BlocProvider.of<AllQuestionsCubit>(context).updateScore();
   }
 }

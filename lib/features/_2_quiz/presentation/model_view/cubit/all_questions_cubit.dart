@@ -21,6 +21,7 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     correctAnswer = 0;
     worngAnswer = 0;
     isUserSubmitAnswer = false;
+    isUserChooseAnswer = false;
   }
 
   Future<void> fetchAllQuestions({required String category}) async {
@@ -76,5 +77,17 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     } else {
       return false;
     }
+  }
+
+  bool isAvaliableToGoToNextQuestion() {
+    return isUserSubmitAnswer ? true : false;
+  }
+
+  void goToNextQuestion() {
+    currentQuestion++;
+    choosedAnswerIndex = -1;
+    isUserSubmitAnswer = false;
+    isUserChooseAnswer = false;
+    emit(AllQuestionsGoToNextQuestion(questionsList));
   }
 }

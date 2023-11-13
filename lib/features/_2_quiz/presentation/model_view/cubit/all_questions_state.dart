@@ -12,21 +12,27 @@ class AllQuestionsInitial extends AllQuestionsState {}
 class AllQuestionsLoading extends AllQuestionsState {}
 
 class AllQuestionsUserAnswered extends AllQuestionsState {
-  final List<QuestionModel> questions;
+  final List<QuestionModel> questionsList;
 
-  const AllQuestionsUserAnswered(this.questions);
+  const AllQuestionsUserAnswered(this.questionsList);
 }
 
 class AllQuestionsUserSubmit extends AllQuestionsState {
-  final List<QuestionModel> questions;
+  final List<QuestionModel> questionsList;
 
-  const AllQuestionsUserSubmit(this.questions);
+  const AllQuestionsUserSubmit(this.questionsList);
 }
 
 class AllQuestionsSuccess extends AllQuestionsState {
-  final List<QuestionModel> questions;
+  final List<QuestionModel> questionsList;
 
-  const AllQuestionsSuccess(this.questions);
+  const AllQuestionsSuccess(this.questionsList);
+}
+
+class AllQuestionsGoToNextQuestion extends AllQuestionsState {
+  final List<QuestionModel> questionsList;
+
+  const AllQuestionsGoToNextQuestion(this.questionsList);
 }
 
 class AllQuestionsFailure extends AllQuestionsState {
