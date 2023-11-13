@@ -77,10 +77,7 @@ class _QuizViewbodyState extends State<QuizViewbody> {
                           text: "Confirm",
                           isPressable:
                               BlocProvider.of<AllQuestionsCubit>(context)
-                                          .choosedAnswerIndex ==
-                                      -1
-                                  ? false
-                                  : true,
+                                  .isSubmitButtonAvaliable(),
                           onPressed: () {
                             submitAnswer(context);
                             setState(() {});

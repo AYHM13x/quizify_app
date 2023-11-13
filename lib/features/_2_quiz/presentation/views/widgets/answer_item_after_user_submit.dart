@@ -13,15 +13,17 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
     required this.id,
     this.isSelected = false,
     required this.question,
+    required this.answerText,
   });
 
   final int id;
+  final String answerText;
   final QuestionModel question;
   final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
-    if (question.answers!.answerList[id] != kThereIsNoAnswer) {
+    if (answerText != kThereIsNoAnswer) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: ElevatedButton(
@@ -64,8 +66,7 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
     if (question.correctAnswers!.correctAnswerList[id] == "true") {
       return AppColors.greenColor;
     } else {
-      if (question.correctAnswers!.correctAnswerList[choosedAnswerIndex] ==
-          "false") {
+      if (id == choosedAnswerIndex) {
         return AppColors.redColor;
       } else {
         return AppColors.blackColor;

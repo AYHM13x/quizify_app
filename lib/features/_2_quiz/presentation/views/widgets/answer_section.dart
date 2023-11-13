@@ -46,6 +46,8 @@ class _AswerSectionState extends State<AswerSection> {
           } else {
             return AswerItemAfterUserSubmit(
               id: index,
+              answerText: widget.question.answers!.answerList[index] ??
+                  kThereIsNoAnswer,
               question: widget.question,
             );
           }

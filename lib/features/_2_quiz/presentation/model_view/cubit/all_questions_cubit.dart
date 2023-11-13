@@ -69,4 +69,12 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   int getChoosedAnswerIndex() {
     return choosedAnswerIndex;
   }
+
+  bool isSubmitButtonAvaliable() {
+    if (isUserChooseAnswer && !isUserSubmitAnswer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
