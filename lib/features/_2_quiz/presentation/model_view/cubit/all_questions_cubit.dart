@@ -9,19 +9,19 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   AllQuestionsCubit(this.quizRepo) : super(AllQuestionsInitial());
   final QuizRepo quizRepo;
   List<QuestionModel> questionsList = [];
-  int currentQuestion = 0;
-  int choosedAnswerIndex = -1;
-  int correctAnswer = 0, worngAnswer = 0;
-  bool isUserChooseAnswer = false;
-  bool isUserSubmitAnswer = false;
+  int _currentQuestion = 0;
+  int _choosedAnswerIndex = -1;
+  int _correctAnswer = 0, _worngAnswer = 0;
+  bool _isUserChooseAnswer = false;
+  bool _isUserSubmitAnswer = false;
 
   void _initValues() {
-    currentQuestion = 0;
-    choosedAnswerIndex = -1;
-    correctAnswer = 0;
-    worngAnswer = 0;
-    isUserSubmitAnswer = false;
-    isUserChooseAnswer = false;
+    _currentQuestion = 0;
+    _choosedAnswerIndex = -1;
+    _correctAnswer = 0;
+    _worngAnswer = 0;
+    _isUserSubmitAnswer = false;
+    _isUserChooseAnswer = false;
   }
 
   Future<void> fetchAllQuestions({required String category}) async {
@@ -45,57 +45,69 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   }
 
   void userChoosed() {
-    if (choosedAnswerIndex != -1) {
-      isUserChooseAnswer = true;
+    if (_choosedAnswerIndex != -1) {
+      _isUserChooseAnswer = true;
       emit(AllQuestionsUserAnswered(questionsList));
     }
     emit(AllQuestionsSuccess(questionsList));
   }
 
-  void setChoosedAnswerIndex(int index) {
-    currentQuestion = index;
+  int getChoosedAnswerIndex() {
+    return _choosedAnswerIndex;
+  }
+
+  void setChoosedAnswerIndex(int choosedIndex) {
+    _choosedAnswerIndex = choosedIndex;
   }
 
   void updateScore() {
-    if (questionsList[currentQuestion]
+    if (questionsList[_currentQuestion]
             .correctAnswers!
-            .correctAnswerList[choosedAnswerIndex] ==
+            .correctAnswerList[_choosedAnswerIndex] ==
         "true") {
-      correctAnswer++;
+      _correctAnswer++;
     } else {
-      worngAnswer++;
+      _worngAnswer++;
     }
-    isUserSubmitAnswer = true;
+    _isUserSubmitAnswer = true;
     emit(AllQuestionsUserSubmit(
       questionsList,
     ));
   }
 
-  int getChoosedAnswerIndex() {
-    return choosedAnswerIndex;
+  int getCorrectAnswersResult() {
+    return _correctAnswer;
+  }
+
+  int getWorngAnswersResult() {
+    return _worngAnswer;
   }
 
   bool isSubmitButtonAvaliable() {
-    if (isUserChooseAnswer && !isUserSubmitAnswer) {
+    if (_isUserChooseAnswer && !_isUserSubmitAnswer) {
       return true;
     } else {
       return false;
     }
   }
 
+  bool getSubmitVar() {
+    return _isUserSubmitAnswer;
+  }
+
   bool isAvaliableToGoToNextQuestion() {
-    return isUserSubmitAnswer ? true : false;
+    return _isUserSubmitAnswer ? true : false;
   }
 
   int getCurrentQuestionIndex() {
-    return currentQuestion;
+    return _currentQuestion;
   }
 
   void goToNextQuestion() {
-    currentQuestion++;
-    choosedAnswerIndex = -1;
-    isUserSubmitAnswer = false;
-    isUserChooseAnswer = false;
+    _currentQuestion++;
+    _choosedAnswerIndex = -1;
+    _isUserSubmitAnswer = false;
+    _isUserChooseAnswer = false;
     emit(AllQuestionsGoToNextQuestion(questionsList));
   }
 }

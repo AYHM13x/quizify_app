@@ -29,7 +29,7 @@ class _AswerSectionState extends State<AswerSection> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.question.answers!.answerList.length,
         itemBuilder: (BuildContext context, int index) {
-          if (!BlocProvider.of<AllQuestionsCubit>(context).isUserSubmitAnswer) {
+          if (!BlocProvider.of<AllQuestionsCubit>(context).getSubmitVar()) {
             return AswerItem(
               id: index + 1,
               answerText: widget.question.answers!.answerList[index] ??

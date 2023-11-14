@@ -34,10 +34,10 @@ class _QuizViewBodyDynamicState extends State<QuizViewBodyDynamic> {
             color: AppColors.greyColor,
           ),
           ScoreView(
-            correctAnswer:
-                BlocProvider.of<AllQuestionsCubit>(context).correctAnswer,
-            wrongAnswer:
-                BlocProvider.of<AllQuestionsCubit>(context).worngAnswer,
+            correctAnswer: BlocProvider.of<AllQuestionsCubit>(context)
+                .getCorrectAnswersResult(),
+            wrongAnswer: BlocProvider.of<AllQuestionsCubit>(context)
+                .getWorngAnswersResult(),
           ),
           const Gap(16),
           CutsomButton(
