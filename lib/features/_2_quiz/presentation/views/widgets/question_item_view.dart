@@ -6,8 +6,8 @@ import '../../../../../core/utils/app_colors.dart';
 import 'answer_section.dart';
 import 'qustion_section.dart';
 
-class QuestionView extends StatelessWidget {
-  const QuestionView({super.key, required this.question});
+class QuestionItemView extends StatelessWidget {
+  const QuestionItemView({super.key, required this.question});
 
   final QuestionModel question;
 

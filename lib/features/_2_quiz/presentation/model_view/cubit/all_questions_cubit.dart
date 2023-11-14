@@ -52,6 +52,10 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     emit(AllQuestionsSuccess(questionsList));
   }
 
+  void setChoosedAnswerIndex(int index) {
+    currentQuestion = index;
+  }
+
   void updateScore() {
     if (questionsList[currentQuestion]
             .correctAnswers!
@@ -81,6 +85,10 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
 
   bool isAvaliableToGoToNextQuestion() {
     return isUserSubmitAnswer ? true : false;
+  }
+
+  int getCurrentQuestionIndex() {
+    return currentQuestion;
   }
 
   void goToNextQuestion() {

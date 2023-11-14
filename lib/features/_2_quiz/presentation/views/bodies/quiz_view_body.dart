@@ -3,13 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:quizify_app/features/_2_quiz/presentation/model_view/cubit/all_questions_cubit.dart';
 
-import '../../../../../core/custom_widgets/custom_button.dart';
-import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../data/question_model/question_model.dart';
 import '../appbar/quiz_view_app_bar.dart';
-import '../widgets/question_view.dart';
-import '../widgets/score_view.dart';
+import 'quiz_view_body_dynamic.dart';
 
 class QuizViewbody extends StatefulWidget {
   const QuizViewbody({
@@ -33,6 +30,9 @@ class _QuizViewbodyState extends State<QuizViewbody> {
         if (state is AllQuestionsUserSubmit) {
           setState(() {});
         }
+        if (state is AllQuestionsGoToNextQuestion) {
+          setState(() {});
+        }
       },
       child: Column(
         children: [
@@ -52,48 +52,8 @@ class _QuizViewbodyState extends State<QuizViewbody> {
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        QuestionView(
-                          question: widget.questions[
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .currentQuestion],
-                        ),
-                        const Divider(
-                          height: 8,
-                          thickness: 5,
-                          color: AppColors.greyColor,
-                        ),
-                        ScoreView(
-                          correctAnswer:
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .correctAnswer,
-                          wrongAnswer:
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .worngAnswer,
-                        ),
-                        const Gap(16),
-                        CutsomButton(
-                          text: "Confirm",
-                          isPressable:
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .isSubmitButtonAvaliable(),
-                          onPressed: () {
-                            submitAnswer(context);
-                            setState(() {});
-                          },
-                        ),
-                        CutsomButton(
-                          text: "Next Question",
-                          isPressable:
-                              BlocProvider.of<AllQuestionsCubit>(context)
-                                  .isAvaliableToGoToNextQuestion(),
-                          onPressed: () {
-                            goToNextQuestion(context);
-                            setState(() {});
-                          },
-                        ),
-                      ],
+                    child: QuizViewBodyDynamic(
+                      questions: widget.questions,
                     ),
                   ),
                 ],
@@ -103,13 +63,5 @@ class _QuizViewbodyState extends State<QuizViewbody> {
         ],
       ),
     );
-  }
-
-  void goToNextQuestion(BuildContext context) {
-    BlocProvider.of<AllQuestionsCubit>(context).goToNextQuestion();
-  }
-
-  void submitAnswer(BuildContext context) {
-    BlocProvider.of<AllQuestionsCubit>(context).updateScore();
   }
 }

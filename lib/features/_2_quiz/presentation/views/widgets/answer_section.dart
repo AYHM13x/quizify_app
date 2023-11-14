@@ -12,22 +12,15 @@ class AswerSection extends StatefulWidget {
   const AswerSection({
     super.key,
     required this.question,
-    this.selectedAnswer = -1,
   });
   final QuestionModel question;
-  final int selectedAnswer;
+
   @override
   State<AswerSection> createState() => _AswerSectionState();
 }
 
 class _AswerSectionState extends State<AswerSection> {
-  int insideSelectedAnswer = -1;
   @override
-  void initState() {
-    insideSelectedAnswer = widget.selectedAnswer;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -42,13 +35,16 @@ class _AswerSectionState extends State<AswerSection> {
               answerText: widget.question.answers!.answerList[index] ??
                   kThereIsNoAnswer,
               onPressed: () {
-                insideSelectedAnswer = index;
-                BlocProvider.of<AllQuestionsCubit>(context).choosedAnswerIndex =
-                    index;
+                BlocProvider.of<AllQuestionsCubit>(context)
+                    .setChoosedAnswerIndex(index);
                 BlocProvider.of<AllQuestionsCubit>(context).userChoosed();
                 setState(() {});
               },
-              isSelected: insideSelectedAnswer == index ? true : false,
+              isSelected: BlocProvider.of<AllQuestionsCubit>(context)
+                          .getChoosedAnswerIndex() ==
+                      index
+                  ? true
+                  : false,
             );
           } else {
             return AswerItemAfterUserSubmit(
