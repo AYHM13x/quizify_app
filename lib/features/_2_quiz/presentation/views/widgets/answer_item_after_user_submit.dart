@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
-import 'package:quizify_app/features/_2_quiz/presentation/model_view/cubit/all_questions_cubit.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../../../../core/utils/styles.dart';
 
 class AswerItemAfterUserSubmit extends StatelessWidget {
@@ -39,7 +38,8 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
               ),
             ),
             backgroundColor: MaterialStateProperty.all<Color>(
-              getColorAfterSubmit(context),
+              getColorAfterSubmit(context, id,
+                  question.correctAnswers!.correctAnswerList[id] ?? "false"),
             ),
           ),
           child: Container(
@@ -57,20 +57,6 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
       );
     } else {
       return const Center();
-    }
-  }
-
-  Color getColorAfterSubmit(BuildContext context) {
-    int choosedAnswerIndex =
-        BlocProvider.of<AllQuestionsCubit>(context).getChoosedAnswerIndex();
-    if (question.correctAnswers!.correctAnswerList[id] == "true") {
-      return AppColors.greenColor;
-    } else {
-      if (id == choosedAnswerIndex) {
-        return AppColors.redColor;
-      } else {
-        return AppColors.blackColor;
-      }
     }
   }
 }

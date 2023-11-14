@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../model_view/cubit/all_questions_cubit.dart';
+import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import 'quiz_view_body.dart';
 
 class QuizViewbodyBlocBuilder extends StatefulWidget {

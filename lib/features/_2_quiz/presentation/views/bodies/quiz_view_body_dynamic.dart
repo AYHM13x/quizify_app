@@ -4,8 +4,9 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/custom_widgets/custom_button.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../../data/question_model/question_model.dart';
-import '../../model_view/cubit/all_questions_cubit.dart';
+import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import '../widgets/question_item_view.dart';
 import '../widgets/score_view.dart';
 
@@ -65,11 +66,5 @@ class _QuizViewBodyDynamicState extends State<QuizViewBodyDynamic> {
     }
   }
 
-  void goToNextQuestion(BuildContext context) {
-    BlocProvider.of<AllQuestionsCubit>(context).goToNextQuestion();
-  }
-
-  void submitAnswer(BuildContext context) {
-    BlocProvider.of<AllQuestionsCubit>(context).updateScore();
-  }
+  
 }

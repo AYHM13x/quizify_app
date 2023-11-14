@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
-import 'package:quizify_app/features/_2_quiz/presentation/model_view/cubit/all_questions_cubit.dart';
 import 'package:quizify_app/features/_2_quiz/presentation/views/widgets/answer_item_after_user_submit.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/dimensions_of_screen.dart';
+import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import 'answer_item.dart';
 
 class AswerSection extends StatefulWidget {

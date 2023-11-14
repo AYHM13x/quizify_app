@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:quizify_app/features/_2_quiz/presentation/model_view/cubit/all_questions_cubit.dart';
 
 import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../data/question_model/question_model.dart';
+import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import '../appbar/quiz_view_app_bar.dart';
 import 'quiz_view_body_dynamic.dart';
 

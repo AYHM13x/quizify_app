@@ -18,8 +18,8 @@ class QuizRepoImpl implements QuizRepo {
   Future<Either<Failure, List<QuestionModel>>> fetchquestions(
       {required String category}) async {
     try {
-      List<dynamic> data =
-          await apiService.get(endPoint: "$_endPoint&category=$category");
+      List<dynamic> data = await apiService.get(
+          endPoint: "$_endPoint&category=$category&difficulty=easy");
       List<QuestionModel> questions = [];
       for (var item in data) {
         questions.add(QuestionModel.fromJson(item));

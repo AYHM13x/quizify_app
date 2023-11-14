@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
 
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/functions/quiz_functions.dart';
 import 'answer_section.dart';
 import 'qustion_section.dart';
 
@@ -50,15 +51,5 @@ class QuestionItemView extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Color getColorDifficulty(String text) {
-    if (text == "Easy") {
-      return AppColors.greenColor;
-    } else if (text == "Medium") {
-      return AppColors.orangeColor;
-    } else {
-      return AppColors.redColor;
-    }
   }
 }
