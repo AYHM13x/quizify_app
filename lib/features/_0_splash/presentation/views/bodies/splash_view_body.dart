@@ -48,7 +48,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         Text(
           kAppName,
           //"𝓥𝓲𝓻𝓽𝓾𝓪𝓵 𝓢𝓱𝓸𝓹",
-          style: Styles.textStyle70.copyWith(
+          style: Styles.textStyle60.copyWith(
             fontFamily: FontFamilies.dancingScript,
           ),
           textAlign: TextAlign.center,

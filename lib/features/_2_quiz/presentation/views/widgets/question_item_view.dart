@@ -4,8 +4,8 @@ import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/functions/quiz_functions.dart';
-import 'answer_section.dart';
-import 'qustion_section.dart';
+import 'answers_section.dart';
+import 'qustion_text_section.dart';
 
 class QuestionItemView extends StatelessWidget {
   const QuestionItemView({super.key, required this.question});
@@ -16,7 +16,7 @@ class QuestionItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        QuestionSection(
+        QuestionTextSection(
           text: question.question!,
         ),
         const Gap(8),
@@ -45,7 +45,7 @@ class QuestionItemView extends StatelessWidget {
         const Gap(8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: AswerSection(
+          child: AswersSection(
             question: question,
           ),
         ),

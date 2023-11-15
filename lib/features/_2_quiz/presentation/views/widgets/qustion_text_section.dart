@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/styles.dart';
 
-class QuestionSection extends StatelessWidget {
-  const QuestionSection({
+class QuestionTextSection extends StatelessWidget {
+  const QuestionTextSection({
     super.key,
     required this.text,
   });

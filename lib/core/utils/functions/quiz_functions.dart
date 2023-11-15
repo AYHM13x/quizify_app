@@ -36,3 +36,23 @@ Color getColorDifficulty(String text) {
     return AppColors.redColor;
   }
 }
+
+String getTheFinalResultTextView(BuildContext context) {
+  if (BlocProvider.of<AllQuestionsCubit>(context).getTheFinalResult() > 60.0) {
+    return "Congratulation, you are PASSED in the quiz ✅";
+  } else {
+    return "Ohh No, you are FAILED in the quiz ❌";
+  }
+}
+
+double getNumberOfAvailbleAnswers(List<String?> list) {
+  double x = 1;
+  String text = "";
+  for (var i = 0; i < list.length; i++) {
+    text = list[i] ?? "";
+    if (text != "") {
+      x++;
+    }
+  }
+  return x;
+}

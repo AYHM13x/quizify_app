@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
-import 'package:quizify_app/features/_2_quiz/presentation/views/widgets/answer_item_after_user_submit.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/dimensions_of_screen.dart';
+import '../../../../../core/utils/functions/quiz_functions.dart';
+import '../../../data/question_model/question_model.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import 'answer_item.dart';
+import 'answer_item_after_user_submit.dart';
 
-class AswerSection extends StatefulWidget {
-  const AswerSection({
+class AswersSection extends StatefulWidget {
+  const AswersSection({
     super.key,
     required this.question,
   });
   final QuestionModel question;
 
   @override
-  State<AswerSection> createState() => _AswerSectionState();
+  State<AswersSection> createState() => _AswersSectionState();
 }
 
-class _AswerSectionState extends State<AswerSection> {
-  @override
+class _AswersSectionState extends State<AswersSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: DimensionsOfScreen.dimensionsOfHeight(context, 70),
+      height: (65 *
+              (getNumberOfAvailbleAnswers(
+                  widget.question.answers!.answerList))) +
+          8,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.question.answers!.answerList.length,

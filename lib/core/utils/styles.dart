@@ -21,13 +21,19 @@ abstract class Styles {
   );
   //titles of book
   static const textStyle30 = TextStyle(
-    //fontFamily: kGTSectraFine,
     fontSize: 30,
     fontWeight: FontWeight.normal,
   );
-  static const textStyle70 = TextStyle(
-    //fontFamily: kGTSectraFine,
+  static const textStyle50 = TextStyle(
+    fontSize: 50,
+    fontWeight: FontWeight.bold,
+  );
+  static const textStyle60 = TextStyle(
     fontSize: 60,
+    fontWeight: FontWeight.bold,
+  );
+  static const textStyle200 = TextStyle(
+    fontSize: 200,
     fontWeight: FontWeight.bold,
   );
 }

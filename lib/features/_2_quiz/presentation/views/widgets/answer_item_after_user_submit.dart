@@ -47,9 +47,12 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(8),
             child: Text(
-              "$id - ${question.answers!.answerList[id]}",
+              "${id + 1} - ${question.answers!.answerList[id]}",
               style: Styles.textStyle16.copyWith(
-                color: isSelected ? AppColors.blackColor : AppColors.whiteColor,
+                color: getColorText(isSelected,
+                        question.correctAnswers!.correctAnswerList[id]!)
+                    ? AppColors.blackColor
+                    : AppColors.whiteColor,
               ),
             ),
           ),
@@ -57,6 +60,14 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
       );
     } else {
       return const Center();
+    }
+  }
+
+  bool getColorText(bool isSelected, String isCorrect) {
+    if ((isSelected && isCorrect == "false") || isCorrect == "true") {
+      return true;
+    } else {
+      return false;
     }
   }
 }

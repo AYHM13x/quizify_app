@@ -52,9 +52,9 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     emit(AllQuestionsSuccess(questionsList));
   }
 
-  int getChoosedAnswerIndex() {
-    return _choosedAnswerIndex;
-  }
+  int getQuestionListLength() => questionsList.length;
+
+  int getChoosedAnswerIndex() => _choosedAnswerIndex;
 
   void setChoosedAnswerIndex(int choosedIndex) {
     _choosedAnswerIndex = choosedIndex;
@@ -75,13 +75,9 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     ));
   }
 
-  int getCorrectAnswersResult() {
-    return _correctAnswer;
-  }
+  int getCorrectAnswersResult() => _correctAnswer;
 
-  int getWorngAnswersResult() {
-    return _worngAnswer;
-  }
+  int getWorngAnswersResult() => _worngAnswer;
 
   bool isSubmitButtonAvaliable() {
     if (_isUserChooseAnswer && !_isUserSubmitAnswer) {
@@ -91,17 +87,13 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     }
   }
 
-  bool getSubmitVar() {
-    return _isUserSubmitAnswer;
-  }
+  bool getSubmitVar() => _isUserSubmitAnswer;
 
   bool isAvaliableToGoToNextQuestion() {
     return _isUserSubmitAnswer ? true : false;
   }
 
-  int getCurrentQuestionIndex() {
-    return _currentQuestion;
-  }
+  int getCurrentQuestionIndex() => _currentQuestion;
 
   void goToNextQuestion() {
     _currentQuestion++;
@@ -109,5 +101,10 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     _isUserSubmitAnswer = false;
     _isUserChooseAnswer = false;
     emit(AllQuestionsGoToNextQuestion(questionsList));
+  }
+
+  double getTheFinalResult() {
+    double result = (_correctAnswer / (questionsList.length)) * 100.0;
+    return result;
   }
 }
