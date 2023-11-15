@@ -22,7 +22,7 @@ class QuizifyApp extends StatelessWidget {
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light, // LightMode
+        brightness: Brightness.dark, // LightMode
         fontFamily: FontFamilies.comicSansMS,
         //scaffoldBackgroundColor: Colors.red,
       ),

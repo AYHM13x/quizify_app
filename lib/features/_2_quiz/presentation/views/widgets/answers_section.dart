@@ -26,7 +26,7 @@ class _AswersSectionState extends State<AswersSection> {
       height: (65 *
               (getNumberOfAvailbleAnswers(
                   widget.question.answers!.answerList))) +
-          8,
+          22,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.question.answers!.answerList.length,
