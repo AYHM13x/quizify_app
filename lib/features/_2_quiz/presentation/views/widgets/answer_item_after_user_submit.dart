@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 
-class AswerItemAfterUserSubmit extends StatelessWidget {
+class AswerItemAfterUserSubmit extends StatefulWidget {
   const AswerItemAfterUserSubmit({
     super.key,
     required this.id,
@@ -21,38 +24,63 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
   final bool isSelected;
 
   @override
+  State<AswerItemAfterUserSubmit> createState() =>
+      _AswerItemAfterUserSubmitState();
+}
+
+class _AswerItemAfterUserSubmitState extends State<AswerItemAfterUserSubmit> {
+  @override
   Widget build(BuildContext context) {
-    if (answerText != kThereIsNoAnswer) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22.0),
-                side: BorderSide(
-                  color:
-                      isSelected ? AppColors.orangeColor : AppColors.whiteColor,
+    if (widget.answerText != kThereIsNoAnswer) {
+      return BlocListener<SettingsCubit, SettingsState>(
+        listener: (context, state) {
+          if (state is SettingsDarkAppTheme || state is SettingsLightAppTheme) {
+            setState(() {});
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(22.0),
+                  side: BorderSide(
+                    color: BlocProvider.of<SettingsCubit>(context).getApptheme()
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
+                  ),
+                ),
+              ),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                getBackGroundColorAfterSubmit(
+                  id: widget.id,
+                  currentChoosedAnwser: widget.question.correctAnswers!
+                          .correctAnswerList[widget.id] ??
+                      "false",
+                  choosedAnswerIndex:
+                      BlocProvider.of<AllQuestionsCubit>(context)
+                          .getChoosedAnswerIndex(),
+                  isDark: BlocProvider.of<SettingsCubit>(context).getApptheme(),
                 ),
               ),
             ),
-            backgroundColor: MaterialStateProperty.all<Color>(
-              getColorAfterSubmit(context, id,
-                  question.correctAnswers!.correctAnswerList[id] ?? "false"),
-            ),
-          ),
-          child: Container(
-            height: 65,
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              "${id + 1} - ${question.answers!.answerList[id]}",
-              style: Styles.textStyle16.copyWith(
-                color: getColorText(isSelected,
-                        question.correctAnswers!.correctAnswerList[id]!)
-                    ? AppColors.blackColor
-                    : AppColors.whiteColor,
+            child: Container(
+              height: 65,
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                "${widget.id + 1} - ${widget.question.answers!.answerList[widget.id]}",
+                style: Styles.textStyle16.copyWith(
+                  color: getColorTextAfterSubmit(
+                    isSelected: widget.isSelected,
+                    isCorrect: widget
+                        .question.correctAnswers!.correctAnswerList[widget.id]!,
+                    isDark:
+                        BlocProvider.of<SettingsCubit>(context).getApptheme(),
+                  ),
+                ),
               ),
             ),
           ),
@@ -60,14 +88,6 @@ class AswerItemAfterUserSubmit extends StatelessWidget {
       );
     } else {
       return const Center();
-    }
-  }
-
-  bool getColorText(bool isSelected, String isCorrect) {
-    if ((isSelected && isCorrect == "false") || isCorrect == "true") {
-      return true;
-    } else {
-      return false;
     }
   }
 }

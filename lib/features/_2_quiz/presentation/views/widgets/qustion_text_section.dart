@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizify_app/core/utils/app_colors.dart';
 import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
-import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/styles.dart';
 
 class QuestionTextSection extends StatefulWidget {
@@ -35,8 +35,8 @@ class _QuestionTextSectionState extends State<QuestionTextSection> {
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
               color: BlocProvider.of<SettingsCubit>(context).getApptheme()
-                  ? Colors.white
-                  : Colors.black),
+                  ? AppColors.whiteColor
+                  : AppColors.blackColor),
         ),
         child: Text(
           widget.text,
@@ -46,29 +46,5 @@ class _QuestionTextSectionState extends State<QuestionTextSection> {
         ),
       ),
     );
-  }
-
-  Color getShapeColorQuestionTextSection(BuildContext context, bool isDark) {
-    if (isDark) {
-      return AppColors.whiteColor;
-    } else {
-      return AppColors.blackColor;
-    }
-  }
-
-  Color getBackGroundColorQuestionTextSection(BuildContext context) {
-    if (BlocProvider.of<SettingsCubit>(context).getApptheme()) {
-      return AppColors.redColor;
-    } else {
-      return AppColors.yellowColor;
-    }
-  }
-
-  Color getTextColorQuestionTextSection(BuildContext context) {
-    if (BlocProvider.of<SettingsCubit>(context).getApptheme()) {
-      return AppColors.whiteColor;
-    } else {
-      return AppColors.blackColor;
-    }
   }
 }

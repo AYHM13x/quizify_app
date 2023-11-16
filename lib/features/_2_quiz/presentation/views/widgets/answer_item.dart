@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../../../../core/utils/styles.dart';
 
 class AswerItem extends StatefulWidget {
@@ -67,42 +67,6 @@ class _AswerItemState extends State<AswerItem> {
       );
     } else {
       return const Center();
-    }
-  }
-
-  Color getShapeColorAswerItem(BuildContext context, bool isSelected) {
-    if (isSelected) {
-      return AppColors.orangeColor;
-    } else {
-      if (BlocProvider.of<SettingsCubit>(context).getApptheme()) {
-        return AppColors.whiteColor;
-      } else {
-        return AppColors.blackColor;
-      }
-    }
-  }
-
-  Color getBackGroundColorAswerItem(BuildContext context, bool isSelected) {
-    if (isSelected) {
-      return AppColors.yellowColor;
-    } else {
-      if (BlocProvider.of<SettingsCubit>(context).getApptheme()) {
-        return AppColors.blackColor;
-      } else {
-        return AppColors.whiteColor;
-      }
-    }
-  }
-
-  Color getTextColorAswerItem(BuildContext context, bool isSelected) {
-    if (isSelected) {
-      return AppColors.blackColor;
-    } else {
-      if (BlocProvider.of<SettingsCubit>(context).getApptheme()) {
-        return AppColors.whiteColor;
-      } else {
-        return AppColors.blackColor;
-      }
     }
   }
 }
