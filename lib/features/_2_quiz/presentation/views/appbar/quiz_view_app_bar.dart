@@ -1,44 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
-import '../../../../../core/utils/cubits/setting_provider/model_theme.dart';
+import '../../../../../core/utils/cubits/settings_cubit/settings_cubit.dart';
 
-class QuizViewAppBar extends StatelessWidget {
+class QuizViewAppBar extends StatefulWidget {
   const QuizViewAppBar({super.key, this.text});
   final String? text;
+
+  @override
+  State<QuizViewAppBar> createState() => _QuizViewAppBarState();
+}
+
+class _QuizViewAppBarState extends State<QuizViewAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ModelTheme>(
-        builder: (context, ModelTheme themeNotifier, child) {
-      return Row(
-        children: [
-          Text(
-            kAppName,
-            style: Styles.textStyle30.copyWith(
-              fontFamily: FontFamilies.dancingScript,
-              fontWeight: FontWeight.bold,
-            ),
+    return Row(
+      children: [
+        Text(
+          kAppName,
+          style: Styles.textStyle30.copyWith(
+            fontFamily: FontFamilies.dancingScript,
+            fontWeight: FontWeight.bold,
           ),
-          const Spacer(),
-          Text(
-            text ?? "",
-            style: Styles.textStyle30,
-          ),
-          const Spacer(),
-          IconButton(
-            onPressed: () {
-              themeNotifier.isDark
-                  ? themeNotifier.isDark = false
-                  : themeNotifier.isDark = true;
-            },
-            icon: Icon(themeNotifier.isDark ? Icons.nightlight : Icons.sunny),
-            iconSize: 34,
-          )
-        ],
-      );
-    });
+        ),
+        const Spacer(),
+        Text(
+          widget.text ?? "",
+          style: Styles.textStyle30,
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: () {
+            BlocProvider.of<SettingsCubit>(context).changeAppTheme();
+            setState(() {});
+          },
+          icon: Icon(BlocProvider.of<SettingsCubit>(context).getApptheme()
+              ? Icons.sunny
+              : Icons.nightlight),
+          iconSize: 34,
+        )
+      ],
+    );
   }
 }
