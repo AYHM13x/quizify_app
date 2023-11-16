@@ -30,7 +30,6 @@ class _QuizViewbodyBlocBuilderState extends State<QuizViewbodyBlocBuilder> {
             questions: state.questionsList,
           );
         } else if (state is AllQuestionsGoToNextQuestion) {
-          //return const LoadingMainView();
           return QuizViewbody(
             questions: state.questionsList,
           );

@@ -20,11 +20,13 @@ class QuestionTextSection extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: AppColors.whiteColor),
+        color: AppColors.blackColor,
       ),
       child: Text(
         text,
         style: Styles.textStyle16.copyWith(
           fontWeight: FontWeight.bold,
+          color: AppColors.whiteColor,
         ),
       ),
     );
