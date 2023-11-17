@@ -11,4 +11,6 @@ abstract class AppColors {
   static const redColor = Color(0xffff0000);
   static const greenColor = Color(0xff00ff00);
   static const blueColor = Color(0xff0000ff);
+  static const lightBlueColor = Colors.blueAccent;
+  static Color blueAxxentColorWithOpacity5 = Colors.blueAccent.withOpacity(.5);
 }

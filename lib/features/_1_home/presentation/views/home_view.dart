@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'bodies/home_view_body.dart';
+import 'drawer/custom_drawer.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,6 +13,9 @@ class HomeView extends StatelessWidget {
         return false;
       },
       child: const Scaffold(
+        drawer: Drawer(
+          child: CustomDrawer(),
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 4),
