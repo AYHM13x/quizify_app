@@ -17,6 +17,7 @@ class CustomDrawer extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: [
         Container(
+          padding: const EdgeInsets.all(40),
           height: DimensionsOfScreen.dimensionsOfHeight(context, 35),
           decoration: BoxDecoration(
             border: const Border(
@@ -30,7 +31,7 @@ class CustomDrawer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Gap(32),
+              //const Gap(44),
               SizedBox(
                 height: 100,
                 child: AspectRatio(
