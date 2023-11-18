@@ -5,7 +5,7 @@ import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/functions/quiz_functions.dart';
+import '../../../../../core/utils/functions/get_color_functions.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 

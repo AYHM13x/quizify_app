@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/functions/quiz_functions.dart';
+import '../../../../../core/utils/functions/get_color_functions.dart';
 import '../../../../../core/utils/styles.dart';
 
 class AswerItem extends StatefulWidget {

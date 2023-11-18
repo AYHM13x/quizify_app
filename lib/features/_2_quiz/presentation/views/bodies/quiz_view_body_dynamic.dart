@@ -13,9 +13,7 @@ class QuizViewBodyDynamic extends StatelessWidget {
   Widget build(BuildContext context) {
     if (BlocProvider.of<AllQuestionsCubit>(context).getCurrentQuestionIndex() <
         questions.length) {
-      return QuizViewBodyUnFinished(
-        questions: questions,
-      );
+      return const QuizViewBodyUnFinished();
     } else {
       return const TheFinalResultBody();
     }
