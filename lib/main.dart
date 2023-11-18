@@ -52,7 +52,9 @@ class _QuizifyAppState extends State<QuizifyApp> {
             routerConfig: AppRouter.router,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              brightness: Brightness.dark,
+              brightness: BlocProvider.of<SettingsCubit>(context).getApptheme()
+                  ? Brightness.dark
+                  : Brightness.light,
               fontFamily: FontFamilies.comicSansMS,
             ),
           );

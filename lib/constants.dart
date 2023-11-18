@@ -10,3 +10,10 @@ const kCategories = [
   "Docker",
   "Kubernetes",
 ];
+
+const List<String> kDiffculty = [
+  "Randomly",
+  "Easy",
+  "Medium",
+  "Hard",
+];

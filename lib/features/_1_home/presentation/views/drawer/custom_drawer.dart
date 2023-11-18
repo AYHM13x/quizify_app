@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:quizify_app/core/utils/dimensions_of_screen.dart';
+import 'package:quizify_app/core/utils/styles.dart';
 
 import '../../../../../core/utils/AsstesApp.dart';
 import '../../../../../core/utils/app_colors.dart';
+import 'custom_dropdown_button.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -24,7 +27,9 @@ class CustomDrawer extends StatelessWidget {
             color: Colors.blueAccent.withOpacity(.3),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Gap(32),
               SizedBox(
                 height: 100,
                 child: AspectRatio(
@@ -32,9 +37,16 @@ class CustomDrawer extends StatelessWidget {
                   child: Image.asset(AssetsImage.appLogo),
                 ),
               ),
-              const Text("data"),
+              const Gap(16),
+              const Text(
+                "Quizify App",
+                style: Styles.textStyle30,
+              ),
             ],
           ),
+        ),
+        const Center(
+          child: CustomDropdownButton(),
         )
       ],
     );

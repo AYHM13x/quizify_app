@@ -18,6 +18,11 @@ class _HomeViewAppBarState extends State<HomeViewAppBar> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const Icon(Icons.list)),
         Text(
           kAppName,
           style: Styles.textStyle30.copyWith(
