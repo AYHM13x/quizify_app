@@ -44,6 +44,10 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     );
   }
 
+  List<QuestionModel> getQuestionList() => questionsList;
+
+  QuestionModel getCurrentQuestion() => questionsList[_currentQuestion];
+
   void userChoosed() {
     if (_choosedAnswerIndex != -1) {
       _isUserChooseAnswer = true;
@@ -104,7 +108,7 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   }
 
   double getTheFinalResult() {
-    double result = (_correctAnswer / (questionsList.length)) * 100.0;
+    double result = (_correctAnswer / questionsList.length) * 100.0;
     return result;
   }
 }
