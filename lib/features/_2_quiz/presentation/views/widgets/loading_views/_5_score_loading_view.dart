@@ -14,13 +14,13 @@ class ScoreLoadingView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Correct Answers: ",
+          "Correct Answers: 0",
           style: Styles.textStyle18.copyWith(
             color: AppColors.greenColor,
           ),
         ),
         Text(
-          "Wrong Answers:             ",
+          "Wrong Answers: 0",
           style: Styles.textStyle18.copyWith(
             color: AppColors.redColor,
           ),

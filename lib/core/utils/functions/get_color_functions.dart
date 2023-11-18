@@ -25,9 +25,9 @@ Color getBackGroundColorAfterSubmit({
   }
 }
 
-Color getColorDifficulty(String text) {
+Color getColorDifficulty(BuildContext context, String text) {
   if (text == "Easy") {
-    return AppColors.greenColor;
+    return AppColors.darkGreenColor;
   } else if (text == "Medium") {
     return AppColors.orangeColor;
   } else {

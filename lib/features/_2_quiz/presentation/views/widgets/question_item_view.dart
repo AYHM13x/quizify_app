@@ -30,7 +30,7 @@ class QuestionItemView extends StatelessWidget {
                 Text(
                   question.difficulty!,
                   style: TextStyle(
-                    color: getColorDifficulty(question.difficulty!),
+                    color: getColorDifficulty(context, question.difficulty!),
                   ),
                 ),
               ],
