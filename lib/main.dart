@@ -27,39 +27,22 @@ class _QuizifyAppState extends State<QuizifyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SettingsCubit, SettingsState>(
-      builder: (context, state) {
-        if (state is SettingsDarkAppTheme) {
-          return MaterialApp.router(
-            routerConfig: AppRouter.router,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              brightness: Brightness.dark,
-              fontFamily: FontFamilies.comicSansMS,
-            ),
-          );
-        } else if (state is SettingsLightAppTheme) {
-          return MaterialApp.router(
-            routerConfig: AppRouter.router,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              brightness: Brightness.light,
-              fontFamily: FontFamilies.comicSansMS,
-            ),
-          );
-        } else {
-          return MaterialApp.router(
-            routerConfig: AppRouter.router,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              brightness: BlocProvider.of<SettingsCubit>(context).getApptheme()
-                  ? Brightness.dark
-                  : Brightness.light,
-              fontFamily: FontFamilies.comicSansMS,
-            ),
-          );
+    return BlocListener<SettingsCubit, SettingsState>(
+      listener: (context, state) {
+        if (state is SettingsDarkAppTheme || state is SettingsLightAppTheme) {
+          setState(() {});
         }
       },
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: BlocProvider.of<SettingsCubit>(context).getApptheme()
+              ? Brightness.dark
+              : Brightness.light,
+          fontFamily: FontFamilies.comicSansMS,
+        ),
+      ),
     );
   }
 }
