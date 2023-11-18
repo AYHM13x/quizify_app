@@ -31,15 +31,23 @@ class _HomeViewAppBarState extends State<HomeViewAppBar> {
           ),
         ),
         const Spacer(),
-        IconButton(
-          onPressed: () {
-            BlocProvider.of<SettingsCubit>(context).changeAppTheme();
-            setState(() {});
+        BlocListener<SettingsCubit, SettingsState>(
+          listener: (context, state) {
+            if (state is SettingsDarkAppTheme ||
+                state is SettingsLightAppTheme) {
+              setState(() {});
+            }
           },
-          icon: Icon(BlocProvider.of<SettingsCubit>(context).getApptheme()
-              ? Icons.sunny
-              : Icons.nightlight),
-          iconSize: 34,
+          child: IconButton(
+            onPressed: () {
+              BlocProvider.of<SettingsCubit>(context).changeAppTheme();
+              setState(() {});
+            },
+            icon: Icon(BlocProvider.of<SettingsCubit>(context).getApptheme()
+                ? Icons.sunny
+                : Icons.nightlight),
+            iconSize: 34,
+          ),
         )
       ],
     );
