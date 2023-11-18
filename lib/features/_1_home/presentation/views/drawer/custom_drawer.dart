@@ -5,6 +5,7 @@ import 'package:quizify_app/core/utils/styles.dart';
 
 import '../../../../../core/utils/AsstesApp.dart';
 import '../../../../../core/utils/app_colors.dart';
+import 'custom_dark_theme_switch.dart';
 import 'custom_dropdown_button.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -45,6 +46,12 @@ class CustomDrawer extends StatelessWidget {
             ],
           ),
         ),
+        const Gap(16),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: CustomDarkThemeSwitch(),
+        ),
+        const Gap(16),
         const Center(
           child: CustomDropdownButton(),
         )
