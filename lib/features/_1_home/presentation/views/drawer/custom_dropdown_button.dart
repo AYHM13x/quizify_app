@@ -15,8 +15,6 @@ class CustomDropdownButton extends StatefulWidget {
 }
 
 class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  String dropdownValue = kDiffculty[0];
-
   void dropdownCallBack(String? selctiveValue) {
     if (selctiveValue is String) {
       setState(() {
@@ -26,8 +24,15 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
         } else {
           BlocProvider.of<SettingsCubit>(context).setDifficulty(selctiveValue);
         }
-        dropdownValue = selctiveValue;
       });
+    }
+  }
+
+  String dropdownValue() {
+    if (BlocProvider.of<SettingsCubit>(context).getDifficulty() == "") {
+      return "Randomly";
+    } else {
+      return BlocProvider.of<SettingsCubit>(context).getDifficulty();
     }
   }
 
@@ -40,7 +45,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
           alignedDropdown: true,
           child: DropdownButton(
             isExpanded: true,
-            value: dropdownValue,
+            value: dropdownValue(),
             onChanged: dropdownCallBack,
             alignment: AlignmentDirectional.center,
             borderRadius: BorderRadius.circular(22),
