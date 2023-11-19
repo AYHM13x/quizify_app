@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
@@ -65,12 +66,19 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   }
 
   void updateScore() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
     if (questionsList[_currentQuestion]
             .correctAnswers!
             .correctAnswerList[_choosedAnswerIndex] ==
         "true") {
+      assetsAudioPlayer.open(
+        Audio("assets/sounds/success_sound.mp3"),
+      );
       _correctAnswer++;
     } else {
+      assetsAudioPlayer.open(
+        Audio("assets/sounds/fail_sound.mp3"),
+      );
       _worngAnswer++;
     }
     _isUserSubmitAnswer = true;
