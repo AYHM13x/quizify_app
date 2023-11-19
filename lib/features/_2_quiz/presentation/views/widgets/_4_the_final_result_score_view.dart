@@ -16,7 +16,7 @@ class TheFinalResultScoreView extends StatelessWidget {
       children: [
         Text(
           "${BlocProvider.of<AllQuestionsCubit>(context).getCorrectAnswersResult()}",
-          style: Styles.textStyle200.copyWith(color: AppColors.greenColor),
+          style: Styles.textStyle200.copyWith(color: AppColors.darkGreenColor),
         ),
         SizedBox(
           width: 5,
