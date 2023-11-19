@@ -6,8 +6,8 @@ import '../../../../../core/custom_widgets/custom_button.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
-import '../widgets/question_item_view.dart';
-import '../widgets/score_view.dart';
+import '../widgets/_0_question_item_view.dart';
+import '../widgets/_3_score_view.dart';
 
 class QuizViewBodyUnFinished extends StatefulWidget {
   const QuizViewBodyUnFinished({

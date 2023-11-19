@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
+import 'package:quizify_app/features/_2_quiz/presentation/model_view/all_questions_cubit/all_questions_cubit.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/functions/get_color_functions.dart';
-import 'answers_section.dart';
-import 'qustion_text_section.dart';
+import '_2_answers_section.dart';
+import '_1_qustion_text_section.dart';
 
 class QuestionItemView extends StatelessWidget {
   const QuestionItemView({super.key, required this.question});
@@ -24,13 +26,16 @@ class QuestionItemView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("id: ${question.id.toString()}"),
+            Text(
+                "${BlocProvider.of<AllQuestionsCubit>(context).getCurrentQuestionIndex() + 1}"
+                "/${BlocProvider.of<AllQuestionsCubit>(context).getQuestionListLength()}"),
             Row(
               children: [
                 const Text("difficulty: "),
                 Text(
                   question.difficulty!,
                   style: TextStyle(
-                    color: getColorDifficulty(context, question.difficulty!),
+                    color: getColorDifficulty(question.difficulty!),
                   ),
                 ),
               ],

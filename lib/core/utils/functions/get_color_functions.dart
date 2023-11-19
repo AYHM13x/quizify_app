@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../features/_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 import '../app_colors.dart';
-import '../cubits/settings_cubit/settings_cubit.dart';
 
 Color getBackGroundColorAfterSubmit({
   required int id,
@@ -25,7 +25,7 @@ Color getBackGroundColorAfterSubmit({
   }
 }
 
-Color getColorDifficulty(BuildContext context, String text) {
+Color getColorDifficulty(String text) {
   if (text == "Easy") {
     return AppColors.darkGreenColor;
   } else if (text == "Medium") {

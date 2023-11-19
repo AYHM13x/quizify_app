@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
-import '../../../../../core/utils/cubits/settings_cubit/settings_cubit.dart';
+import '../../../../_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 
 class QuizViewAppBar extends StatefulWidget {
   const QuizViewAppBar({super.key, this.text});

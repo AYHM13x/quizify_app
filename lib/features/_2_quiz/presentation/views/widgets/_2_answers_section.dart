@@ -5,8 +5,8 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../../data/question_model/question_model.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
-import 'answer_item.dart';
-import 'answer_item_after_user_submit.dart';
+import '_20_answer_item.dart';
+import '_21_answer_item_after_user_submit.dart';
 
 class AswersSection extends StatefulWidget {
   const AswersSection({

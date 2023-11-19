@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/styles.dart';
-import '../widgets/the_final_result_score_view.dart';
-import '../widgets/the_final_result_text_view.dart';
+import '../widgets/_4_the_final_result_score_view.dart';
+import '../widgets/_5_the_final_result_text_view.dart';
 
 class TheFinalResultBody extends StatelessWidget {
   const TheFinalResultBody({

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
 import 'core/utils/AsstesApp.dart';
 import 'core/utils/app_routrer.dart';
 import 'core/utils/service_locater.dart';
 import 'core/utils/simple_bloc_observer.dart';
+import 'features/_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();

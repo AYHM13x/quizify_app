@@ -6,7 +6,7 @@ import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../data/question_model/question_model.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import '../appbar/quiz_view_app_bar.dart';
-import 'quiz_view_body_dynamic.dart';
+import '_2_quiz_view_body_dynamic.dart';
 
 class QuizViewbody extends StatefulWidget {
   const QuizViewbody({
@@ -24,13 +24,9 @@ class _QuizViewbodyState extends State<QuizViewbody> {
   Widget build(BuildContext context) {
     return BlocListener<AllQuestionsCubit, AllQuestionsState>(
       listener: (context, state) {
-        if (state is AllQuestionsUserAnswered) {
-          setState(() {});
-        }
-        if (state is AllQuestionsUserSubmit) {
-          setState(() {});
-        }
-        if (state is AllQuestionsGoToNextQuestion) {
+        if (state is AllQuestionsUserAnswered ||
+            state is AllQuestionsUserSubmit ||
+            state is AllQuestionsGoToNextQuestion) {
           setState(() {});
         }
       },

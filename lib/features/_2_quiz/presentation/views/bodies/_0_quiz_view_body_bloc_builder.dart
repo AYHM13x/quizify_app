@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import '../widgets/loading_views/_0_loading_main_view.dart';
-import 'quiz_view_body.dart';
+import '_1_quiz_view_body.dart';
 
 class QuizViewbodyBlocBuilder extends StatefulWidget {
   const QuizViewbodyBlocBuilder({super.key});

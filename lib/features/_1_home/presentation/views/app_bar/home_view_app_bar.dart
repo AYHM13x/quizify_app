@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
+import '../../model_view/cubits/settings_cubit/settings_cubit.dart';
 
 class HomeViewAppBar extends StatefulWidget {
   const HomeViewAppBar({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizify_app/core/utils/cubits/settings_cubit/settings_cubit.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/functions/get_color_functions.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 
 class AswerItem extends StatefulWidget {
   const AswerItem({
