@@ -11,8 +11,8 @@ void submitAnswer(BuildContext context) {
   BlocProvider.of<AllQuestionsCubit>(context).updateScore();
 }
 
-String getTheFinalResultTextView(BuildContext context) {
-  if (BlocProvider.of<AllQuestionsCubit>(context).getTheFinalResult() > 60.0) {
+String getTheFinalResultTextView(bool isPassed) {
+  if (isPassed) {
     return "Congratulation, you are PASSED in the quiz ✅";
   } else {
     return "Ohh No, you are FAILED in the quiz ❌";
