@@ -15,6 +15,8 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   int _correctAnswer = 0, _worngAnswer = 0;
   bool _isUserChooseAnswer = false;
   bool _isUserSubmitAnswer = false;
+  late final AssetsAudioPlayer assetsAudioPlayerSuccess;
+  late final AssetsAudioPlayer assetsAudioPlayerFailure;
 
   void _initValues() {
     _currentQuestion = 0;
@@ -23,6 +25,8 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     _worngAnswer = 0;
     _isUserSubmitAnswer = false;
     _isUserChooseAnswer = false;
+    assetsAudioPlayerSuccess = AssetsAudioPlayer();
+    assetsAudioPlayerFailure = AssetsAudioPlayer();
   }
 
   Future<void> fetchAllQuestions({required String category}) async {
@@ -66,19 +70,20 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   }
 
   void updateScore() {
-    final assetsAudioPlayer = AssetsAudioPlayer();
     if (questionsList[_currentQuestion]
             .correctAnswers!
             .correctAnswerList[_choosedAnswerIndex] ==
         "true") {
-      assetsAudioPlayer.open(
+      assetsAudioPlayerSuccess.open(
         Audio("assets/sounds/success_sound.mp3"),
       );
+      //assetsAudioPlayerSuccess.play();
       _correctAnswer++;
     } else {
-      assetsAudioPlayer.open(
+      assetsAudioPlayerFailure.open(
         Audio("assets/sounds/fail_sound.mp3"),
       );
+      //assetsAudioPlayerFailure.play();
       _worngAnswer++;
     }
     _isUserSubmitAnswer = true;
@@ -117,6 +122,6 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
 
   double getTheFinalResult() {
     double result = (_correctAnswer / questionsList.length) * 100.0;
-    return result;
+    return result.roundToDouble();
   }
 }
