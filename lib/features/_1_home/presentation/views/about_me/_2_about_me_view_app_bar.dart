@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/utils/styles.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/AsstesApp.dart';
+import '../../../../../core/utils/styles.dart';
 import '../../model_view/cubits/settings_cubit/settings_cubit.dart';
 
-class HomeViewAppBar extends StatefulWidget {
-  const HomeViewAppBar({super.key});
+class AboutMeViewAppBar extends StatefulWidget {
+  const AboutMeViewAppBar({super.key});
 
   @override
-  State<HomeViewAppBar> createState() => _HomeViewAppBarState();
+  State<AboutMeViewAppBar> createState() => _AboutMeViewAppBarState();
 }
 
-class _HomeViewAppBarState extends State<HomeViewAppBar> {
+class _AboutMeViewAppBarState extends State<AboutMeViewAppBar> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: const Icon(Icons.list)),
         Text(
           kAppName,
           style: Styles.textStyle30.copyWith(
@@ -30,7 +26,10 @@ class _HomeViewAppBarState extends State<HomeViewAppBar> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const Spacer(),
+        const Text(
+          "Contact Me",
+          style: Styles.textStyle30,
+        ),
         BlocListener<SettingsCubit, SettingsState>(
           listener: (context, state) {
             if (state is SettingsDarkAppTheme ||
