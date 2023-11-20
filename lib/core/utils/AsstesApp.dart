@@ -9,10 +9,6 @@ class AssetsImage {
   static const List<String> categoriesImages = [
     "${_assetesFolder}linux.png",
     "${_assetesFolder}devops.png",
-    "${_assetesFolder}networking.png",
-    "${_assetesFolder}programming.png",
-    "${_assetesFolder}cloud.png",
     "${_assetesFolder}docker.png",
-    "${_assetesFolder}kubernetes.png",
   ];
 }
