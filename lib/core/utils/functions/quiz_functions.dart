@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizify_app/features/_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 
 import '../../../features/_2_quiz/presentation/model_view/all_questions_cubit/all_questions_cubit.dart';
 
@@ -8,7 +9,9 @@ void goToNextQuestion(BuildContext context) {
 }
 
 void submitAnswer(BuildContext context) {
-  BlocProvider.of<AllQuestionsCubit>(context).updateScore();
+  BlocProvider.of<AllQuestionsCubit>(context).updateScore(
+    isNotMuted: BlocProvider.of<SettingsCubit>(context).getSoundApp(),
+  );
 }
 
 String getTheFinalResultTextView(bool isPassed) {

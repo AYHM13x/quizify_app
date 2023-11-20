@@ -7,6 +7,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial());
 
   bool _isDark = true;
+  bool _isNotMuted = true;
   String _difficulty = "";
 
   void changeAppTheme() {
@@ -20,6 +21,16 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   bool getApptheme() => _isDark;
+
+  void switchSound() {
+    if (_isNotMuted) {
+      _isNotMuted = false;
+    } else {
+      _isNotMuted = true;
+    }
+  }
+
+  bool getSoundApp() => _isNotMuted;
 
   void setDifficulty(String difficulty) {
     _difficulty = difficulty;

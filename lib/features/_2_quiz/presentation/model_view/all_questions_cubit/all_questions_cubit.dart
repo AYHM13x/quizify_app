@@ -9,6 +9,7 @@ part 'all_questions_state.dart';
 class AllQuestionsCubit extends Cubit<AllQuestionsState> {
   AllQuestionsCubit(this.quizRepo) : super(AllQuestionsInitial());
   final QuizRepo quizRepo;
+
   List<QuestionModel> questionsList = [];
   int _currentQuestion = 0;
   int _choosedAnswerIndex = -1;
@@ -71,21 +72,25 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     _choosedAnswerIndex = choosedIndex;
   }
 
-  void updateScore() {
+  void updateScore({bool isNotMuted = true}) {
     if (questionsList[_currentQuestion]
             .correctAnswers!
             .correctAnswerList[_choosedAnswerIndex] ==
         "true") {
-      assetsAudioPlayer.open(
-        Audio("assets/sounds/success_sound.mp3"),
-      );
-      //assetsAudioPlayerSuccess.play();
+      if (isNotMuted) {
+        assetsAudioPlayer.open(
+          Audio("assets/sounds/success_sound.mp3"),
+        );
+      }
+
       _correctAnswer++;
     } else {
-      assetsAudioPlayer.open(
-        Audio("assets/sounds/fail_sound.mp3"),
-      );
-      //assetsAudioPlayerFailure.play();
+      if (isNotMuted) {
+        assetsAudioPlayer.open(
+          Audio("assets/sounds/fail_sound.mp3"),
+        );
+      }
+
       _worngAnswer++;
     }
     _isUserSubmitAnswer = true;
