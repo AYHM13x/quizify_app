@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:quizify_app/core/utils/styles.dart';
+import 'package:simple_icons/simple_icons.dart';
 import '_3_about_me_card_view.dart';
 
 class AboutMeViewBody extends StatelessWidget {
@@ -77,7 +78,7 @@ class AboutMeViewBody extends StatelessWidget {
         AboutMeCardView(
           text: "GitHub.com/Ayhm13x",
           icon: const Icon(
-            Icons.hub,
+            SimpleIcons.github,
             size: 35.0,
             color: Color(0xFF2C5BAB),
           ),

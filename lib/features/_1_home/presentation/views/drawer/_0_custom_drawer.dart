@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizify_app/core/utils/app_routrer.dart';
 import 'package:quizify_app/core/utils/dimensions_of_screen.dart';
 import 'package:quizify_app/core/utils/styles.dart';
+import 'package:quizify_app/features/_1_home/presentation/views/drawer/_2_custom_sound_switch.dart';
 
 import '../../../../../core/utils/AsstesApp.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '_1_custom_dark_theme_switch.dart';
-import '_2_custom_dropdown_button.dart';
+import '_3_custom_dropdown_button.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -51,30 +54,46 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
         const Gap(16),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomDarkThemeSwitch(),
-              Gap(4),
-              Divider(
+              const CustomDarkThemeSwitch(),
+              const Gap(4),
+              const Divider(
                 height: 5,
                 color: AppColors.lightBlueColor,
               ),
-              Gap(4),
-              Text(
+              const Gap(4),
+              const CustomSoundSwitch(),
+              const Gap(4),
+              const Divider(
+                height: 5,
+                color: AppColors.lightBlueColor,
+              ),
+              const Gap(4),
+              const Text(
                 "Difficulty:",
                 style: Styles.textStyle18,
               ),
-              Gap(4),
-              CustomDropdownButton(),
-              Gap(4),
-              Divider(
+              const Gap(4),
+              const CustomDropdownButton(),
+              const Gap(4),
+              const Divider(
                 height: 5,
                 color: AppColors.lightBlueColor,
               ),
-              Gap(4),
+              const Gap(16),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.aboutMeViewPath);
+                },
+                child: const Text(
+                  "About Me",
+                  style: Styles.textStyle18,
+                ),
+              )
             ],
           ),
         ),
