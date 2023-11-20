@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizify_app/core/utils/dimensions_of_screen.dart';
 
 import '../../../../../constants.dart';
 import '../../model_view/cubits/settings_cubit/settings_cubit.dart';
@@ -18,7 +17,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: DimensionsOfScreen.dimensionsOfWidth(context, 70),
+      //width: DimensionsOfScreen.dimensionsOfWidth(context, 70),
       child: DropdownButtonHideUnderline(
         child: ButtonTheme(
           alignedDropdown: true,
