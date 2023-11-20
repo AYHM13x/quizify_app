@@ -22,7 +22,8 @@ class CategoryListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.quizViewPath);
+              GoRouter.of(context)
+                  .push(AppRouter.quizViewPath, extra: kCategories[index]);
             },
             child: CategoryQuizItem(
               categoryName: kCategories[index],

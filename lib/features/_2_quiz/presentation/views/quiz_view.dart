@@ -7,7 +7,9 @@ import '../model_view/all_questions_cubit/all_questions_cubit.dart';
 import 'bodies/_0_quiz_view_body_bloc_builder.dart';
 
 class QuizView extends StatelessWidget {
-  const QuizView({super.key});
+  const QuizView({super.key, required this.category});
+
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +17,13 @@ class QuizView extends StatelessWidget {
       create: (context) => AllQuestionsCubit(
         getIt.get<QuizRepoImpl>(),
       ),
-      child: const Scaffold(
+      child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4),
-            child: QuizViewbodyBlocBuilder(),
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: QuizViewbodyBlocBuilder(
+              category: category,
+            ),
           ),
         ),
       ),

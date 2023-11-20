@@ -4,6 +4,8 @@ import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.
 import '../../../../core/errors/failures.dart';
 
 abstract class QuizRepo {
-  Future<Either<Failure, List<QuestionModel>>> fetchquestions(
-      {required String category});
+  Future<Either<Failure, List<QuestionModel>>> fetchquestions({
+    required String category,
+    required String difficulty,
+  });
 }

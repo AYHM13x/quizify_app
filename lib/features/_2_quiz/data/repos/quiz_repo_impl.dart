@@ -15,11 +15,13 @@ class QuizRepoImpl implements QuizRepo {
   QuizRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<QuestionModel>>> fetchquestions(
-      {required String category}) async {
+  Future<Either<Failure, List<QuestionModel>>> fetchquestions({
+    required String category,
+    required String difficulty,
+  }) async {
     try {
       List<dynamic> data = await apiService.get(
-          endPoint: "$_endPoint&category=$category&difficulty=easy");
+          endPoint: "$_endPoint&category=$category&difficulty=$difficulty");
       List<QuestionModel> questions = [];
       for (var item in data) {
         questions.add(QuestionModel.fromJson(item));

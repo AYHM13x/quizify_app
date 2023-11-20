@@ -27,10 +27,14 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     assetsAudioPlayer = AssetsAudioPlayer();
   }
 
-  Future<void> fetchAllQuestions({required String category}) async {
+  Future<void> fetchAllQuestions(
+      {required String category, required String difficulty}) async {
     _initValues();
     emit(AllQuestionsLoading());
-    var result = await quizRepo.fetchquestions(category: category);
+    var result = await quizRepo.fetchquestions(
+      category: category,
+      difficulty: difficulty,
+    );
 
     result.fold(
       (failure) {

@@ -23,7 +23,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: quizViewPath,
-        builder: (context, state) => const QuizView(),
+        builder: (context, state) => QuizView(
+          category: state.extra as String,
+        ),
       ),
     ],
   );

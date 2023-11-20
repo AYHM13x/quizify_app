@@ -11,8 +11,10 @@ import '_2_quiz_view_body_dynamic.dart';
 class QuizViewbody extends StatefulWidget {
   const QuizViewbody({
     super.key,
+    required this.category,
     required this.questions,
   });
+  final String category;
   final List<QuestionModel> questions;
 
   @override
@@ -33,10 +35,10 @@ class _QuizViewbodyState extends State<QuizViewbody> {
       child: Column(
         children: [
           const Gap(8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
             child: QuizViewAppBar(
-              text: "Linux Quiz",
+              text: "${widget.category} Quiz",
             ),
           ),
           const Gap(16),
