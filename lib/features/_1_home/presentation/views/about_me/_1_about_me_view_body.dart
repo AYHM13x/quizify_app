@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:quizify_app/core/utils/styles.dart';
 import 'package:simple_icons/simple_icons.dart';
+import '../../../../../core/utils/functions/url_launcher_functions.dart';
 import '_3_about_me_card_view.dart';
 
 class AboutMeViewBody extends StatelessWidget {
@@ -46,7 +47,9 @@ class AboutMeViewBody extends StatelessWidget {
             size: 35.0,
             color: Color(0xFF2C5BAB),
           ),
-          onTap: () {},
+          onTap: () async {
+            callMe("(+963)-993-757-674");
+          },
         ),
         AboutMeCardView(
           text: "AyhmAlAkel1995@gmail.com",
@@ -55,7 +58,9 @@ class AboutMeViewBody extends StatelessWidget {
             size: 35.0,
             color: Color(0xFF2C5BAB),
           ),
-          onTap: () {},
+          onTap: () async {
+            sendEmail("AyhmAlAkel1995@gmail.com");
+          },
         ),
         AboutMeCardView(
           text: "T.me/ayhm13x",
@@ -64,7 +69,9 @@ class AboutMeViewBody extends StatelessWidget {
             size: 35.0,
             color: Color(0xFF2C5BAB),
           ),
-          onTap: () {},
+          onTap: () async {
+            customLaunchUrl("https://T.me/ayhm13x");
+          },
         ),
         AboutMeCardView(
           text: "fb.com/Ayhm.Al-Akel",
@@ -73,16 +80,20 @@ class AboutMeViewBody extends StatelessWidget {
             size: 35.0,
             color: Color(0xFF2C5BAB),
           ),
-          onTap: () {},
+          onTap: () async {
+            customLaunchUrl("https://fb.com/Ayhm.Al-Akel");
+          },
         ),
         AboutMeCardView(
           text: "GitHub.com/Ayhm13x",
           icon: const Icon(
             SimpleIcons.github,
-            size: 35.0,
+            size: 30.0,
             color: Color(0xFF2C5BAB),
           ),
-          onTap: () {},
+          onTap: () async {
+            customLaunchUrl("https://GitHub.com/Ayhm13x");
+          },
         ),
       ],
     );
