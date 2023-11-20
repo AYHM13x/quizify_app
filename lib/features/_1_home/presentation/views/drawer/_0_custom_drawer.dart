@@ -29,6 +29,7 @@ class CustomDrawer extends StatelessWidget {
             color: Colors.blueAccent.withOpacity(.3),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //const Gap(44),
@@ -40,9 +41,11 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               const Gap(16),
-              const Text(
+              Text(
                 "Quizify App",
-                style: Styles.textStyle30,
+                style: Styles.textStyle30.copyWith(
+                  fontFamily: FontFamilies.dancingScript,
+                ),
               ),
             ],
           ),
@@ -50,12 +53,31 @@ class CustomDrawer extends StatelessWidget {
         const Gap(16),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child: CustomDarkThemeSwitch(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDarkThemeSwitch(),
+              Gap(4),
+              Divider(
+                height: 5,
+                color: AppColors.lightBlueColor,
+              ),
+              Gap(4),
+              Text(
+                "Difficulty:",
+                style: Styles.textStyle18,
+              ),
+              Gap(4),
+              CustomDropdownButton(),
+              Gap(4),
+              Divider(
+                height: 5,
+                color: AppColors.lightBlueColor,
+              ),
+              Gap(4),
+            ],
+          ),
         ),
-        const Gap(16),
-        const Center(
-          child: CustomDropdownButton(),
-        )
       ],
     );
   }
