@@ -23,10 +23,8 @@ class _AswersSectionState extends State<AswersSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: (65 *
-              (getNumberOfAvailbleAnswers(
-                  widget.question.answers!.answerList))) +
-          22,
+      height: (70 *
+          (getNumberOfAvailbleAnswers(widget.question.answers!.answerList))),
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.question.answers!.answerList.length,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quizify_app/features/_1_home/presentation/views/about_me/_0_about_me_view.dart';
 
 import '../../features/_0_splash/presentation/views/splash_view.dart';
 import '../../features/_1_home/presentation/views/home_view.dart';
@@ -15,7 +16,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: splashViewPath,
-        builder: (context, state) => const SplashView(),
+        builder: (context, state) => const AboutMeView(),
       ),
       GoRoute(
         path: homeViewPath,

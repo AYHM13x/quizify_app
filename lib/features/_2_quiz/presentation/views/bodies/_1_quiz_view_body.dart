@@ -42,21 +42,25 @@ class _QuizViewbodyState extends State<QuizViewbody> {
             ),
           ),
           const Gap(16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SizedBox(
-              height: DimensionsOfScreen.dimensionsOfHeight(context, 86),
-              child: CustomScrollView(
-                physics: const BouncingScrollPhysics(),
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: QuizViewBodyDynamic(
-                      questions: widget.questions,
-                    ),
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: SizedBox(
+                  height: DimensionsOfScreen.dimensionsOfHeight(context, 86),
+                  child: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: QuizViewBodyDynamic(
+                          questions: widget.questions,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
