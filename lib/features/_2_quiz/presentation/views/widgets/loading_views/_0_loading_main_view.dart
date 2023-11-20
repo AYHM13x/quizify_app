@@ -9,17 +9,17 @@ import '_1_question_loading_section.dart';
 import '_5_score_loading_view.dart';
 
 class LoadingMainView extends StatelessWidget {
-  const LoadingMainView({super.key});
-
+  const LoadingMainView({super.key, required this.category});
+  final String category;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const Gap(8),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           child: QuizViewAppBar(
-            text: "Linux Quiz",
+            text: "$category Quiz",
           ),
         ),
         const Gap(16),

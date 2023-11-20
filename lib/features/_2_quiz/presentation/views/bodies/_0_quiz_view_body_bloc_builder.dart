@@ -48,7 +48,9 @@ class _QuizViewbodyBlocBuilderState extends State<QuizViewbodyBlocBuilder> {
             onWillPop: () async {
               return false;
             },
-            child: const LoadingMainView(),
+            child: LoadingMainView(
+              category: widget.category,
+            ),
           );
         }
       },
