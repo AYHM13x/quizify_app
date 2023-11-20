@@ -7,14 +7,14 @@ import '../../../../../core/utils/functions/quiz_functions.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 
 class TheFinalResultTextView extends StatelessWidget {
-  const TheFinalResultTextView({super.key});
-
+  const TheFinalResultTextView({super.key, required this.isPassed});
+  final bool isPassed;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          getTheFinalResultTextView(context),
+          getTheFinalResultTextView(isPassed),
           style: Styles.textStyle16.copyWith(
             fontWeight: FontWeight.bold,
           ),

@@ -18,19 +18,19 @@ class TheFinalResultBody extends StatefulWidget {
 }
 
 class _TheFinalResultBodyState extends State<TheFinalResultBody> {
+  late bool isPassed;
   @override
   void initState() {
     super.initState();
-    AssetsAudioPlayer assetsAudioPlayerFinalSuccess = AssetsAudioPlayer();
-    AssetsAudioPlayer assetsAudioPlayerFinalFailure = AssetsAudioPlayer();
-    bool isPassed =
+    AssetsAudioPlayer assetsAudioPlayerFinal = AssetsAudioPlayer();
+    isPassed =
         BlocProvider.of<AllQuestionsCubit>(context).getTheFinalResult() > 60.0;
     if (isPassed) {
-      assetsAudioPlayerFinalSuccess.open(
+      assetsAudioPlayerFinal.open(
         Audio("assets/sounds/final_success.mp3"),
       );
     } else {
-      assetsAudioPlayerFinalFailure.open(
+      assetsAudioPlayerFinal.open(
         Audio("assets/sounds/final_failure.mp3"),
       );
     }
@@ -38,17 +38,19 @@ class _TheFinalResultBodyState extends State<TheFinalResultBody> {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Gap(32),
-        Text(
+        const Gap(32),
+        const Text(
           "Final Result",
           style: Styles.textStyle50,
         ),
-        TheFinalResultScoreView(),
-        Gap(32),
-        TheFinalResultTextView(),
+        const TheFinalResultScoreView(),
+        const Gap(32),
+        TheFinalResultTextView(
+          isPassed: isPassed,
+        ),
       ],
     );
   }
