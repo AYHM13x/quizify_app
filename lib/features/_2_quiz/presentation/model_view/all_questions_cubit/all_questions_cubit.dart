@@ -4,6 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:quizify_app/features/_2_quiz/data/question_model/question_model.dart';
 import 'package:quizify_app/features/_2_quiz/data/repos/quiz_repo.dart';
 
+import '../../../../../core/utils/AsstesApp.dart';
+
 part 'all_questions_state.dart';
 
 class AllQuestionsCubit extends Cubit<AllQuestionsState> {
@@ -79,7 +81,7 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
         "true") {
       if (isNotMuted) {
         assetsAudioPlayer.open(
-          Audio("assets/sounds/success_sound.mp3"),
+          Audio(AssetsSound.successSound),
         );
       }
 
@@ -87,7 +89,7 @@ class AllQuestionsCubit extends Cubit<AllQuestionsState> {
     } else {
       if (isNotMuted) {
         assetsAudioPlayer.open(
-          Audio("assets/sounds/fail_sound.mp3"),
+          Audio(AssetsSound.failSound),
         );
       }
 

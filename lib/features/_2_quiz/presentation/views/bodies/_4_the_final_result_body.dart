@@ -2,7 +2,9 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:quizify_app/features/_1_home/presentation/model_view/cubits/settings_cubit/settings_cubit.dart';
 
+import '../../../../../core/utils/AsstesApp.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../model_view/all_questions_cubit/all_questions_cubit.dart';
 import '../widgets/_4_the_final_result_score_view.dart';
@@ -25,14 +27,16 @@ class _TheFinalResultBodyState extends State<TheFinalResultBody> {
     AssetsAudioPlayer assetsAudioPlayerFinal = AssetsAudioPlayer();
     isPassed =
         BlocProvider.of<AllQuestionsCubit>(context).getTheFinalResult() > 60.0;
-    if (isPassed) {
-      assetsAudioPlayerFinal.open(
-        Audio("assets/sounds/final_success.mp3"),
-      );
-    } else {
-      assetsAudioPlayerFinal.open(
-        Audio("assets/sounds/final_failure.mp3"),
-      );
+    if (BlocProvider.of<SettingsCubit>(context).getSoundApp()) {
+      if (isPassed) {
+        assetsAudioPlayerFinal.open(
+          Audio(AssetsSound.finalSuccessSound),
+        );
+      } else {
+        assetsAudioPlayerFinal.open(
+          Audio(AssetsSound.finalFailureSound),
+        );
+      }
     }
   }
 
