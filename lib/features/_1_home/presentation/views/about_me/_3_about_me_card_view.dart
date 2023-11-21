@@ -25,9 +25,14 @@ class AboutMeCardView extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: icon,
+          trailing: const Icon(
+            Icons.arrow_right,
+            color: AppColors.blackColor,
+            size: 35,
+          ),
           title: Text(
             text,
-            style: Styles.textStyle18.copyWith(
+            style: Styles.textStyle16.copyWith(
               color: AppColors.blackColor,
               fontWeight: FontWeight.normal,
             ),
@@ -37,7 +42,3 @@ class AboutMeCardView extends StatelessWidget {
     );
   }
 }
-
-
-// size: 35.0,
-//             color: const Color(0xFF2C5BAB),
