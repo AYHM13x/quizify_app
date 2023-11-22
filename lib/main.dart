@@ -34,6 +34,7 @@ class _QuizifyAppState extends State<QuizifyApp> {
         }
       },
       child: MaterialApp.router(
+        title: "Quizify App",
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
